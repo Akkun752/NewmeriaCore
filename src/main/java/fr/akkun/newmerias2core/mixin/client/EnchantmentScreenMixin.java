@@ -1,41 +1,35 @@
 package fr.akkun.newmerias2core.mixin.client;
 
+import fr.akkun.newmerias2core.NewmeriaS2Core;
 import fr.akkun.newmerias2core.rpg.RpgAttachments;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.EnchantmentScreen;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.EnchantmentMenu;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 /**
- * The click itself already works without Lapis for Magic 2+ (see {@code EnchantmentMenuMixin}),
- * but the UI still reads the real slot via {@code EnchantmentMenu#getGoldCount()} to decide whether
- * to render each option as disabled and whether the lapis-cost tooltip line is red - both call
- * sites go through that one method, so redirecting it here fixes both: for Magic 2+ players it
- * always reports a full stack, exactly as if the maximum possible Lapis were always present,
- * regardless of whatever's actually (if anything) in the slot - and without ever touching it.
+ * For Magic 2+ players, swaps the whole enchanting table background for a version with no lapis
+ * slot drawn on it (the slot itself already stops accepting items at that point - see {@code
+ * EnchantmentMenuMixin}/{@code LapisBypassSlot}). Below Magic 2, the real vanilla background (with
+ * the slot) is left untouched, since those players still need to see where to place lapis.
  */
 @Mixin(EnchantmentScreen.class)
 public abstract class EnchantmentScreenMixin {
-    @Redirect(method = "extractBackground", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/inventory/EnchantmentMenu;getGoldCount()I"))
-    private int newmerias2core$fakeMaxLapisInBackground(EnchantmentMenu menu) {
-        return newmerias2core$fakeGoldCount(menu);
-    }
+    /** 256x256, same as vanilla's own enchanting_table.png - expected at
+     *  {@code assets/newmerias2core/textures/gui/container/enchanting_table_no_lapis.png}. */
+    private static final Identifier NO_LAPIS_BACKGROUND =
+            Identifier.fromNamespaceAndPath(NewmeriaS2Core.MOD_ID, "textures/gui/container/enchanting_table_no_lapis.png");
 
-    @Redirect(method = "extractRenderState", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/inventory/EnchantmentMenu;getGoldCount()I"))
-    private int newmerias2core$fakeMaxLapisInTooltip(EnchantmentMenu menu) {
-        return newmerias2core$fakeGoldCount(menu);
-    }
-
-    private static int newmerias2core$fakeGoldCount(EnchantmentMenu menu) {
-        Player player = Minecraft.getInstance().player;
+    @ModifyArg(method = "extractBackground", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blit(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIFFIIII)V"))
+    private Identifier newmerias2core$conditionalBackground(Identifier original) {
+        LocalPlayer player = Minecraft.getInstance().player;
         if (player != null && player.getData(RpgAttachments.RPG_DATA).magicLevel() >= 2) {
-            return 64;
+            return NO_LAPIS_BACKGROUND;
         }
-        return menu.getGoldCount();
+        return original;
     }
 }

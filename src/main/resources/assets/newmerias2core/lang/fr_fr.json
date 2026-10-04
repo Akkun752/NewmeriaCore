@@ -20,11 +20,14 @@
   "block.newmerias2core.sapphire_ore": "Minerai de saphir",
   "block.newmerias2core.deepslate_sapphire_ore": "Minerai de saphir des abîmes",
   "block.newmerias2core.sapphire_block": "Bloc de saphir",
+  "block.newmerias2core.green_screen_block": "Bloc de fond vert",
   "item.newmerias2core.obsidian_stick": "Bâton d'obsidienne",
   "item.newmerias2core.sapphire_sword": "Épée en saphir",
   "item.newmerias2core.snow_walker_spawn_egg": "Œuf d'invocation de marcheur de neige",
+  "item.newmerias2core.hell_zombie_spawn_egg": "Œuf d'invocation de zombie des Enfers",
 
   "entity.newmerias2core.snow_walker": "Marcheur de neige",
+  "entity.newmerias2core.hell_zombie": "Zombie des Enfers",
 
   "item.newmerias2core.wooden_spatula": "Spatule en bois",
   "item.newmerias2core.stone_spatula": "Spatule en pierre",
@@ -155,10 +158,14 @@
   "rpg.newmerias2core.companion.horse": "Cheval",
   "rpg.newmerias2core.companion.iron_golem": "Golem de fer",
   "rpg.newmerias2core.companion.nautilus": "Nautile",
+  "rpg.newmerias2core.companion.died": "Votre compagnon d'encre est mort.",
 
   "commands.newmerias2core.rpg.add_points": "%s points RPG ajoutés à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
   "commands.newmerias2core.rpg.add_level": "%s niveau(x) RPG ajouté(s) à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
   "commands.newmerias2core.rpg.remove_points": "%s points RPG retirés à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
   "commands.newmerias2core.rpg.remove_level": "%s niveau(x) RPG retiré(s) à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
-  "commands.newmerias2core.rpg.reset": "Progression RPG totalement réinitialisée pour %s"
+  "commands.newmerias2core.rpg.reset": "Progression RPG totalement réinitialisée pour %s",
+
+  "commands.newmerias2core.colorname.success": "Couleur de %s définie sur %s",
+  "commands.newmerias2core.colorname.invalid_color": "Couleur inconnue : %s"
 }

@@ -44,9 +44,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SAPPHIRE_ORE);
                         output.accept(ModItems.DEEPSLATE_SAPPHIRE_ORE);
                         output.accept(ModItems.SAPPHIRE_BLOCK);
+                        output.accept(ModItems.GREEN_SCREEN_BLOCK);
                         output.accept(ModItems.OBSIDIAN_STICK);
                         output.accept(ModItems.SAPPHIRE_SWORD);
                         output.accept(ModItems.SNOW_WALKER_SPAWN_EGG);
+                        output.accept(ModItems.HELL_ZOMBIE_SPAWN_EGG);
 
                         output.accept(ModItems.WOODEN_SPATULA);
                         output.accept(ModItems.STONE_SPATULA);

@@ -20,11 +20,14 @@
   "block.newmerias2core.sapphire_ore": "Sapphire Ore",
   "block.newmerias2core.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
   "block.newmerias2core.sapphire_block": "Block of Sapphire",
+  "block.newmerias2core.green_screen_block": "Green Screen Block",
   "item.newmerias2core.obsidian_stick": "Obsidian Stick",
   "item.newmerias2core.sapphire_sword": "Sapphire Sword",
   "item.newmerias2core.snow_walker_spawn_egg": "Snow Walker Spawn Egg",
+  "item.newmerias2core.hell_zombie_spawn_egg": "Hell Zombie Spawn Egg",
 
   "entity.newmerias2core.snow_walker": "Snow Walker",
+  "entity.newmerias2core.hell_zombie": "Hell Zombie",
 
   "item.newmerias2core.wooden_spatula": "Wooden Spatula",
   "item.newmerias2core.stone_spatula": "Stone Spatula",
@@ -155,10 +158,14 @@
   "rpg.newmerias2core.companion.horse": "Horse",
   "rpg.newmerias2core.companion.iron_golem": "Iron Golem",
   "rpg.newmerias2core.companion.nautilus": "Nautilus",
+  "rpg.newmerias2core.companion.died": "Your Ink Friend has died.",
 
   "commands.newmerias2core.rpg.add_points": "Added %s RPG points to %s (now level %s, %s stat point(s) available)",
   "commands.newmerias2core.rpg.add_level": "Added %s RPG level(s) to %s (now level %s, %s stat point(s) available)",
   "commands.newmerias2core.rpg.remove_points": "Removed %s RPG points from %s (now level %s, %s stat point(s) available)",
   "commands.newmerias2core.rpg.remove_level": "Removed %s RPG level(s) from %s (now level %s, %s stat point(s) available)",
-  "commands.newmerias2core.rpg.reset": "Reset all RPG progress for %s"
+  "commands.newmerias2core.rpg.reset": "Reset all RPG progress for %s",
+
+  "commands.newmerias2core.colorname.success": "%s's name color set to %s",
+  "commands.newmerias2core.colorname.invalid_color": "Unknown color: %s"
 }

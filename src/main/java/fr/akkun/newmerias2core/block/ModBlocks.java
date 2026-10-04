@@ -234,4 +234,10 @@ public class ModBlocks {
     public static final DeferredBlock<OilCauldronBlock> OIL_CAULDRON = BLOCKS.registerBlock("oil_cauldron",
             properties -> new OilCauldronBlock(properties.mapColor(MapColor.METAL).strength(2.0F)
                     .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().noLootTable()));
+
+    // Same strength (0.3F) and sound (GLASS) vanilla's own redstone_lamp uses, same unconditional
+    // light level (15) vanilla's own glowstone uses.
+    public static final DeferredBlock<Block> GREEN_SCREEN_BLOCK = BLOCKS.registerBlock("green_screen_block",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_GREEN)
+                    .strength(0.3F).sound(SoundType.GLASS).lightLevel(state -> 15)));
 }

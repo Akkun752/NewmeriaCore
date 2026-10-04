@@ -38,6 +38,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.SAPPHIRE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         // Custom flat texture instead of vanilla's two-colour spawn egg rendering.
         itemModels.generateFlatItem(ModItems.SNOW_WALKER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.HELL_ZOMBIE_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateFlatItem(ModItems.WOODEN_SPATULA.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.STONE_SPATULA.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -101,6 +102,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_BLOCK.get());
+        blockModels.createTrivialCube(ModBlocks.GREEN_SCREEN_BLOCK.get());
 
         blockModels.createTrivialCube(ModBlocks.BLACK_SAND.get());
 

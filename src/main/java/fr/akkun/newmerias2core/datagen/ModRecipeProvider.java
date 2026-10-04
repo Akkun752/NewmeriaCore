@@ -438,6 +438,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Blocks.MOSS_BLOCK)
                 .unlockedBy(getHasName(ModBlocks.MARBLE_BRICKS.get()), has(ModBlocks.MARBLE_BRICKS.get()))
                 .save(output, getConversionRecipeName(ModBlocks.MOSSY_MARBLE_BRICKS.get(), Blocks.MOSS_BLOCK));
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_SCREEN_BLOCK.get())
+                .pattern("###")
+                .pattern("#X#")
+                .pattern("###")
+                .define('#', Blocks.STAINED_GLASS.green())
+                .define('X', Blocks.REDSTONE_LAMP)
+                .unlockedBy(getHasName(Blocks.REDSTONE_LAMP), has(Blocks.REDSTONE_LAMP))
+                .save(output);
     }
 
     @Override

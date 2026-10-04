@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.equine.AbstractHorse;
 import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
@@ -40,7 +41,9 @@ public class CompanionManager {
             return;
         }
 
-        Vec3 spawnPos = player.position().add(player.getLookAngle().scale(2.0));
+        // At the player's own feet, not projected out along their look angle - looking down at the
+        // ground would otherwise spawn the companion embedded in a block.
+        Vec3 spawnPos = player.position();
         companion.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
         companion.setYRot(player.getYRot());
 
@@ -53,6 +56,16 @@ public class CompanionManager {
         applyOwnership(companion, player);
         companion.setData(CompanionAttachments.COMPANION_DATA, new CompanionData(player.getUUID(), form));
         companion.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(companion, Monster.class, true));
+        // Every form should be comfortable in water regardless of its vanilla nature - AI won't avoid
+        // pathing through it (actual no-drown/no-conversion handling is in CompanionEvents).
+        companion.setPathfindingMalus(PathType.WATER, 0.0F);
+        companion.setPathfindingMalus(PathType.WATER_BORDER, 0.0F);
+        // Nautilus is happy staying submerged - every other form always surfaces, in any fluid.
+        if (form != CompanionForm.NAUTILUS) {
+            companion.goalSelector.addGoal(0, new CompanionFloatGoal(companion));
+        }
+        // Always follows its owner (teleporting over when left too far behind), regardless of form.
+        companion.goalSelector.addGoal(4, new CompanionFollowGoal(companion, 1.0));
 
         level.addFreshEntity(companion);
         player.setData(CompanionAttachments.PLAYER_COMPANION, PlayerCompanionData.of(companion.getUUID()));
@@ -82,7 +95,8 @@ public class CompanionManager {
         Entity existing = level.getEntity(existingId.get());
         if (existing instanceof LivingEntity livingExisting && !existing.isRemoved()) {
             // Lethal, armor/invulnerability-bypassing damage (same damage type the /kill command
-            // uses) - triggers the normal death pipeline, so equipment/inventory still drops.
+            // uses) - triggers the normal death pipeline. CompanionEvents#onDrops strips out any
+            // vanilla loot-table drops, so this doesn't leave items behind.
             livingExisting.hurtServer(level, level.damageSources().genericKill(), Float.MAX_VALUE);
         }
     }
