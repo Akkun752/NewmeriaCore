@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "package": "fr.akkun.newmeriacore.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "EnchantmentMenuMixin",
+    "BiomeSourceAccessor",
+    "MobMixin",
+    "MultiNoiseBiomeSourceParameterListAccessor",
+    "NoiseGeneratorSettingsAccessor"
+  ],
+  "client": [
+    "client.EnchantmentScreenMixin",
+    "client.WolfRendererMixin",
+    "client.AbstractZombieRendererMixin",
+    "client.HorseRendererMixin",
+    "client.IronGolemRendererMixin",
+    "client.NautilusRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

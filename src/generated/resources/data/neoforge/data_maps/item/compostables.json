@@ -1,0 +1,10 @@
+{
+  "values": {
+    "newmeriacore:short_dry_black_grass": {
+      "chance": 0.3
+    },
+    "newmeriacore:tall_dry_black_grass": {
+      "chance": 0.3
+    }
+  }
+}

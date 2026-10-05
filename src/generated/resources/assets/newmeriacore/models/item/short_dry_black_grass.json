@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "newmeriacore:block/short_dry_black_grass"
+  }
+}

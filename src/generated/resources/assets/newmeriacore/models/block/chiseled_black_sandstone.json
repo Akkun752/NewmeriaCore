@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "newmeriacore:block/black_sandstone_top",
+    "side": "newmeriacore:block/chiseled_black_sandstone"
+  }
+}

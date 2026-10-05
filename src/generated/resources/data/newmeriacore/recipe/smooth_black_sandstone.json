@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "experience": 0.1,
+  "ingredient": "newmeriacore:black_sandstone",
+  "result": {
+    "id": "newmeriacore:smooth_black_sandstone"
+  }
+}

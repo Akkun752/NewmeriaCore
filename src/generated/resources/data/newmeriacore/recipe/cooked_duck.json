@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.35,
+  "ingredient": "newmeriacore:raw_duck",
+  "result": {
+    "id": "newmeriacore:cooked_duck"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "newmerias2core:marble_bricks",
+  "ingredient": "newmeriacore:marble_bricks",
   "result": {
-    "id": "newmerias2core:chiseled_marble_bricks"
+    "id": "newmeriacore:chiseled_marble_bricks"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "experience": 0.1,
+  "ingredient": "newmeriacore:marble_bricks",
+  "result": {
+    "id": "newmeriacore:cracked_marble_bricks"
+  }
+}

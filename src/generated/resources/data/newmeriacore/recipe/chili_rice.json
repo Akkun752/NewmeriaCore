@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "newmeriacore:rice",
+    "newmeriacore:chili_pepper"
+  ],
+  "result": {
+    "id": "newmeriacore:chili_rice"
+  }
+}

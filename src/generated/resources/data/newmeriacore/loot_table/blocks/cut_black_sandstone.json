@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "newmeriacore:cut_black_sandstone"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "newmeriacore:blocks/cut_black_sandstone"
+}

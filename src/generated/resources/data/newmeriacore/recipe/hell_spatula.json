@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:netherite_ingot",
+    "X": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "result": {
+    "id": "newmeriacore:hell_spatula"
+  }
+}

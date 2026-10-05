@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "#minecraft:stone_tool_materials",
+    "X": "newmeriacore:obsidian_stick"
+  },
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "result": {
+    "id": "newmeriacore:stone_spatula"
+  }
+}

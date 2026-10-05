@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "newmerias2core:cobbled_marble"
+            "items": "newmeriacore:cobbled_marble"
           }
         ]
       },

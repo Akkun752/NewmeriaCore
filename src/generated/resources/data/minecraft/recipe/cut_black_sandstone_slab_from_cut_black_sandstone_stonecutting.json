@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "newmerias2core:cut_black_sandstone",
+  "ingredient": "newmeriacore:cut_black_sandstone",
   "result": {
     "count": 2,
-    "id": "newmerias2core:cut_black_sandstone_slab"
+    "id": "newmeriacore:cut_black_sandstone_slab"
   }
 }

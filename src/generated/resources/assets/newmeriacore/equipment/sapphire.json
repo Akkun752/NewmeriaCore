@@ -1,0 +1,29 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "newmeriacore:sapphire"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "newmeriacore:sapphire"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "newmeriacore:sapphire"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "newmeriacore:sapphire"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "newmeriacore:sapphire"
+      }
+    ]
+  }
+}

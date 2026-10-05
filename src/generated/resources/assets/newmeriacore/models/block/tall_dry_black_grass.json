@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "newmeriacore:block/tall_dry_black_grass"
+  }
+}

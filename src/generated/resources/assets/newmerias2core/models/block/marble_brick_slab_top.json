@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "newmerias2core:block/marble_bricks",
-    "side": "newmerias2core:block/marble_bricks",
-    "top": "newmerias2core:block/marble_bricks"
-  }
-}

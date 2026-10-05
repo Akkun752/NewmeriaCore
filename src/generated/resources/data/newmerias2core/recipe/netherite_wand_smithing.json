@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smithing_transform",
-  "addition": "#minecraft:netherite_tool_materials",
-  "base": "newmerias2core:diamond_wand",
-  "result": {
-    "id": "newmerias2core:netherite_wand"
-  },
-  "template": "minecraft:netherite_upgrade_smithing_template"
-}

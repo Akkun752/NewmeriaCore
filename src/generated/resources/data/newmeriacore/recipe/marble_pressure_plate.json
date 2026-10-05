@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "newmeriacore:marble"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "id": "newmeriacore:marble_pressure_plate"
+  }
+}

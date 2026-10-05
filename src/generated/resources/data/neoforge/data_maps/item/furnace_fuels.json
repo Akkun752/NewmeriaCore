@@ -1,0 +1,10 @@
+{
+  "values": {
+    "newmeriacore:short_dry_black_grass": {
+      "burn_time": 100
+    },
+    "newmeriacore:tall_dry_black_grass": {
+      "burn_time": 100
+    }
+  }
+}

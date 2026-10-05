@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "newmeriacore:block/cut_black_sandstone_slab"
+    },
+    "type=double": {
+      "model": "newmeriacore:block/cut_black_sandstone"
+    },
+    "type=top": {
+      "model": "newmeriacore:block/cut_black_sandstone_slab_top"
+    }
+  }
+}

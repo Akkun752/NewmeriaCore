@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side",
-  "textures": {
-    "wall": "newmerias2core:block/mossy_marble_bricks"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "newmerias2core:block/marble",
-    "side": "newmerias2core:block/marble",
-    "top": "newmerias2core:block/marble"
-  }
-}

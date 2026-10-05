@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#minecraft:netherite_tool_materials",
+  "base": "newmeriacore:diamond_spatula",
+  "result": {
+    "id": "newmeriacore:netherite_spatula"
+  },
+  "template": "minecraft:netherite_upgrade_smithing_template"
+}

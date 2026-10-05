@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rice_shoot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "newmeriacore:rice_shoot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "newmeriacore:rice"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rice_shoot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "newmeriacore:rice"
+    ]
+  }
+}

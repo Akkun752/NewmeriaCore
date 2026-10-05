@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "#minecraft:stone_tool_materials",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    " #",
+    "X "
+  ],
+  "result": {
+    "id": "newmeriacore:stone_wand"
+  }
+}

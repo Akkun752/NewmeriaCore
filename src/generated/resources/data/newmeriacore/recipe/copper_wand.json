@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "minecraft:copper_ingot",
+    "X": "minecraft:stick"
+  },
+  "pattern": [
+    " #",
+    "X "
+  ],
+  "result": {
+    "id": "newmeriacore:copper_wand"
+  }
+}

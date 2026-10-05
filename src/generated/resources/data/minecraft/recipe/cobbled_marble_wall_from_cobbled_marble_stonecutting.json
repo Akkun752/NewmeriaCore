@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "newmerias2core:cobbled_marble",
+  "ingredient": "newmeriacore:cobbled_marble",
   "result": {
-    "id": "newmerias2core:cobbled_marble_wall"
+    "id": "newmeriacore:cobbled_marble_wall"
   }
 }

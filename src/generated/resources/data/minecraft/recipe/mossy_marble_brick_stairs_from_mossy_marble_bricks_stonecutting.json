@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "newmerias2core:mossy_marble_bricks",
+  "ingredient": "newmeriacore:mossy_marble_bricks",
   "result": {
-    "id": "newmerias2core:mossy_marble_brick_stairs"
+    "id": "newmeriacore:mossy_marble_brick_stairs"
   }
 }

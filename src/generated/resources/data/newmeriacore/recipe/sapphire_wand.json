@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "newmeriacore:sapphire",
+    "X": "newmeriacore:obsidian_stick"
+  },
+  "pattern": [
+    " #",
+    "X "
+  ],
+  "result": {
+    "id": "newmeriacore:sapphire_wand"
+  }
+}

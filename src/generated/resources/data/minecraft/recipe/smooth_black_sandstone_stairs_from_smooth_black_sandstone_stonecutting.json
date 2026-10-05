@@ -1,7 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "newmerias2core:smooth_black_sandstone",
+  "ingredient": "newmeriacore:smooth_black_sandstone",
   "result": {
-    "id": "newmerias2core:smooth_black_sandstone_stairs"
+    "id": "newmeriacore:smooth_black_sandstone_stairs"
   }
 }

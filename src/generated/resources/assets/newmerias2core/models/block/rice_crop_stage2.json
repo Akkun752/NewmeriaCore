@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "newmerias2core:block/rice_crop_stage2"
-  }
-}

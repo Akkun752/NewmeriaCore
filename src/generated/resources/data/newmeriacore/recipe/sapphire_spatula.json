@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "newmeriacore:sapphire",
+    "X": "newmeriacore:obsidian_stick"
+  },
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "result": {
+    "id": "newmeriacore:sapphire_spatula"
+  }
+}
