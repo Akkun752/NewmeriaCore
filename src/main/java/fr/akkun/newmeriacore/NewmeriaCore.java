@@ -8,10 +8,12 @@ import fr.akkun.newmeriacore.creativemodetab.ModCreativeModeTabs;
 import fr.akkun.newmeriacore.data.ModDataComponents;
 import fr.akkun.newmeriacore.effect.ModEffects;
 import fr.akkun.newmeriacore.entity.ModEntityTypes;
+import fr.akkun.newmeriacore.worldgen.ModFeatures;
 import fr.akkun.newmeriacore.fluid.ModFluids;
 import fr.akkun.newmeriacore.frying.FryingAttachments;
 import fr.akkun.newmeriacore.item.ModItems;
 import fr.akkun.newmeriacore.potion.ModPotions;
+import fr.akkun.newmeriacore.recipe.ModRecipeSerializers;
 import fr.akkun.newmeriacore.rpg.RpgAttachments;
 import fr.akkun.newmeriacore.rpg.companion.CompanionAttachments;
 import fr.akkun.newmeriacore.rpg.network.RpgNetworking;
@@ -61,6 +63,8 @@ public class NewmeriaCore {
         ModPotions.register(modEventBus);
 
         ModEntityTypes.register(modEventBus);
+        ModFeatures.register(modEventBus);
+        ModRecipeSerializers.register(modEventBus);
 
         RpgAttachments.register(modEventBus);
         CompanionAttachments.register(modEventBus);

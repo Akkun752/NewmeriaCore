@@ -3,22 +3,31 @@ package fr.akkun.newmeriacore.datagen;
 import fr.akkun.newmeriacore.NewmeriaCore;
 import fr.akkun.newmeriacore.block.ModBlocks;
 import fr.akkun.newmeriacore.item.ModItems;
+import fr.akkun.newmeriacore.recipe.NoRemainderShapelessRecipe;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.RecipeUnlockAdvancementBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -79,6 +88,27 @@ public class ModRecipeProvider extends RecipeProvider {
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.RAW_DUCK.get()), RecipeCategory.FOOD, ModItems.COOKED_DUCK.get(), 0.35F, 600)
                 .unlockedBy(getHasName(ModItems.RAW_DUCK.get()), has(ModItems.RAW_DUCK.get()))
                 .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(ModItems.COOKED_DUCK.get()) + "_from_campfire_cooking");
+
+        shapeless(RecipeCategory.FOOD, ModItems.TOMATO_SEEDS.get(), 2)
+                .requires(ModItems.TOMATO)
+                .unlockedBy(getHasName(ModItems.TOMATO.get()), has(ModItems.TOMATO))
+                .save(output);
+
+        shapeless(RecipeCategory.FOOD, ModItems.RAW_SAUSAGE.get(), 4)
+                .requires(Items.PORKCHOP)
+                .unlockedBy(getHasName(Items.PORKCHOP), has(Items.PORKCHOP))
+                .save(output);
+
+        // Raw Sausage cooks like any vanilla raw meat: furnace, smoker and campfire.
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_SAUSAGE.get()), RecipeCategory.FOOD, CookingBookCategory.FOOD, ModItems.SAUSAGE.get(), 0.35F, 200)
+                .unlockedBy(getHasName(ModItems.RAW_SAUSAGE.get()), has(ModItems.RAW_SAUSAGE.get()))
+                .save(output);
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(ModItems.RAW_SAUSAGE.get()), RecipeCategory.FOOD, ModItems.SAUSAGE.get(), 0.35F, 100)
+                .unlockedBy(getHasName(ModItems.RAW_SAUSAGE.get()), has(ModItems.RAW_SAUSAGE.get()))
+                .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(ModItems.SAUSAGE.get()) + "_from_smoking");
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(ModItems.RAW_SAUSAGE.get()), RecipeCategory.FOOD, ModItems.SAUSAGE.get(), 0.35F, 600)
+                .unlockedBy(getHasName(ModItems.RAW_SAUSAGE.get()), has(ModItems.RAW_SAUSAGE.get()))
+                .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(ModItems.SAUSAGE.get()) + "_from_campfire_cooking");
 
         shaped(RecipeCategory.MISC, ModItems.OBSIDIAN_STICK.get(), 4)
                 .pattern("#")
@@ -387,12 +417,23 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.SAPPHIRE.get()), has(ModItems.SAPPHIRE.get()))
                 .save(output);
 
-        // Any arrangement works - shapeless recipes don't care about slot positions.
-        shapeless(RecipeCategory.MISC, ModItems.OIL_BUCKET.get())
-                .requires(Items.WATER_BUCKET)
-                .requires(Items.WHEAT_SEEDS, 8)
-                .unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET))
-                .save(output);
+        // Any arrangement works - shapeless recipes don't care about slot positions. Built by hand
+        // rather than through shapeless(): this is our own "no remainder" recipe type, so the Water
+        // Bucket is fully consumed instead of also handing back an empty Bucket next to the Oil Bucket.
+        ResourceKey<Recipe<?>> oilBucketId = ResourceKey.create(Registries.RECIPE,
+                Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, getItemName(ModItems.OIL_BUCKET.get())));
+        List<Ingredient> oilBucketIngredients = new ArrayList<>();
+        oilBucketIngredients.add(Ingredient.of(Items.WATER_BUCKET));
+        for (int i = 0; i < 8; i++) {
+            oilBucketIngredients.add(Ingredient.of(Items.WHEAT_SEEDS));
+        }
+        RecipeUnlockAdvancementBuilder oilBucketUnlock = new RecipeUnlockAdvancementBuilder();
+        oilBucketUnlock.unlockedBy(getHasName(Items.WATER_BUCKET), has(Items.WATER_BUCKET));
+        output.accept(oilBucketId,
+                new NoRemainderShapelessRecipe(RecipeBuilder.createCraftingCommonInfo(true),
+                        RecipeBuilder.createCraftingBookInfo(RecipeCategory.MISC, null),
+                        new ItemStackTemplate(ModItems.OIL_BUCKET.get()), oilBucketIngredients),
+                oilBucketUnlock.build(output, oilBucketId, RecipeCategory.MISC));
 
         // Vanilla has no crafting recipe for chainmail armor (only villager trades) - adding our own,
         // using iron nuggets as the "ingot" stand-in, in the standard armor shapes. Saved explicitly

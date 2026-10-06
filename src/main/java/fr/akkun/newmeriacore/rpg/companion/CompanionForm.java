@@ -18,20 +18,29 @@ import java.util.function.Supplier;
  * WOLF 64x32, ZOMBIE 64x64, HORSE 64x64, IRON_GOLEM 128x128, NAUTILUS 128x128.
  */
 public enum CompanionForm {
-    WOLF(() -> EntityTypes.WOLF, "rpg.newmeriacore.companion.wolf"),
-    ZOMBIE(() -> EntityTypes.ZOMBIE, "rpg.newmeriacore.companion.zombie"),
-    HORSE(() -> EntityTypes.HORSE, "rpg.newmeriacore.companion.horse"),
-    IRON_GOLEM(() -> EntityTypes.IRON_GOLEM, "rpg.newmeriacore.companion.iron_golem"),
-    NAUTILUS(() -> EntityTypes.NAUTILUS, "rpg.newmeriacore.companion.nautilus");
+    WOLF(() -> EntityTypes.WOLF, "rpg.newmeriacore.companion.wolf", 40.0F, true),
+    ZOMBIE(() -> EntityTypes.ZOMBIE, "rpg.newmeriacore.companion.zombie", 20.0F, true),
+    HORSE(() -> EntityTypes.HORSE, "rpg.newmeriacore.companion.horse", 30.0F, false),
+    IRON_GOLEM(() -> EntityTypes.IRON_GOLEM, "rpg.newmeriacore.companion.iron_golem", 100.0F, true),
+    NAUTILUS(() -> EntityTypes.NAUTILUS, "rpg.newmeriacore.companion.nautilus", 15.0F, false);
 
     private final Supplier<EntityType<?>> entityType;
     private final String translationKey;
+    private final float vanillaMaxHealth;
+    private final boolean fighter;
     private final Identifier icon;
     private final Identifier texture;
 
-    CompanionForm(Supplier<EntityType<?>> entityType, String translationKey) {
+    /**
+     * @param vanillaMaxHealth max health of the vanilla mob this form copies: a tamed wolf (40, a wild one
+     *                         only has 8), and the best a horse can roll (15-30)
+     * @param fighter          whether this form attacks hostile mobs on its own (the others have no attack)
+     */
+    CompanionForm(Supplier<EntityType<?>> entityType, String translationKey, float vanillaMaxHealth, boolean fighter) {
         this.entityType = entityType;
         this.translationKey = translationKey;
+        this.vanillaMaxHealth = vanillaMaxHealth;
+        this.fighter = fighter;
         String name = name().toLowerCase(Locale.ROOT);
         this.icon = Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "textures/gui/companion/" + name + ".png");
         this.texture = Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "textures/entity/companion/" + name + ".png");
@@ -39,6 +48,15 @@ public enum CompanionForm {
 
     public EntityType<?> entityType() {
         return entityType.get();
+    }
+
+    /** A companion always has 1.5x the health of the vanilla mob it is shaped after. */
+    public float maxHealth() {
+        return vanillaMaxHealth * 1.5F;
+    }
+
+    public boolean isFighter() {
+        return fighter;
     }
 
     public Component displayName() {

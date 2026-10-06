@@ -2,15 +2,20 @@ package fr.akkun.newmeriacore.datagen;
 
 import fr.akkun.newmeriacore.NewmeriaCore;
 import fr.akkun.newmeriacore.block.ModBlocks;
+import fr.akkun.newmeriacore.block.custom.TomatoCropBlock;
 import fr.akkun.newmeriacore.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.CropBlock;
 
@@ -36,6 +41,11 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RAW_DUCK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.COOKED_DUCK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.FRIED_DUCK.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.RAW_SAUSAGE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SAUSAGE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.FRIED_SAUSAGE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TOMATO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.TOMATO_SEEDS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAPPHIRE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_STICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAPPHIRE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -102,6 +112,18 @@ public class ModModelProvider extends ModelProvider {
 
         blockModels.createCropBlock(ModBlocks.RICE_CROP.get(), CropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7);
         blockModels.createCropBlock(ModBlocks.CHILI_CROP.get(), BeetrootBlock.AGE, 0, 1, 2, 3);
+        blockModels.createCropBlock(ModBlocks.ONIONS.get(), BeetrootBlock.AGE, 0, 1, 2, 3);
+
+        // Tomatoes: one crop model per age like createCropBlock, but the two halves of the growth use two
+        // separate texture sets - budding_tomatoes_stage0-3 (ages 0-3), then tomatoes_stage0-3 (ages 4-7).
+        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(ModBlocks.TOMATOES.get())
+                .with(PropertyDispatch.initial(CropBlock.AGE).generate(age -> {
+                    String name = age < TomatoCropBlock.FRUIT_TEXTURES_START_AGE
+                            ? "budding_tomatoes_stage" + age
+                            : "tomatoes_stage" + (age - TomatoCropBlock.FRUIT_TEXTURES_START_AGE);
+                    Identifier id = Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "block/" + name);
+                    return BlockModelGenerators.plainVariant(ModelTemplates.CROP.create(id, TextureMapping.crop(new Material(id)), blockModels.modelOutput));
+                })));
 
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());

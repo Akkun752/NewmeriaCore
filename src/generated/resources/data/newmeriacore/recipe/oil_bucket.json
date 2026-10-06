@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "newmeriacore:crafting_shapeless_no_remainder",
   "ingredients": [
     "minecraft:water_bucket",
     "minecraft:wheat_seeds",

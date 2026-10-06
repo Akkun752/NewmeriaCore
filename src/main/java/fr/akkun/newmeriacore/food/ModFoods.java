@@ -44,4 +44,18 @@ public class ModFoods {
     public static final FoodProperties RAW_DUCK = new FoodProperties.Builder().nutrition(3).saturationModifier(0.45f).build();
     public static final FoodProperties COOKED_DUCK = new FoodProperties.Builder().nutrition(9).saturationModifier(0.9f).build();
     public static final FoodProperties FRIED_DUCK = new FoodProperties.Builder().nutrition(14).saturationModifier(1.35f).build();
+
+    // Sausages: 0.3x their porkchop counterpart (raw 3/0.3, cooked 8/0.8, fried 12/1.2) in both hunger and
+    // actual saturation restored (= nutrition * modifier * 2), so 4 sausages are worth 1.2 porkchops.
+    // Hunger has to be a whole number (0.9 -> 1, 2.4 -> 2, 3.6 -> 4); the modifiers are then derived so
+    // the saturation is exact: 0.54, 3.84 and 8.64 points.
+    public static final FoodProperties RAW_SAUSAGE = new FoodProperties.Builder().nutrition(1).saturationModifier(0.27f).build();
+    public static final FoodProperties SAUSAGE = new FoodProperties.Builder().nutrition(2).saturationModifier(0.96f).build();
+    public static final FoodProperties FRIED_SAUSAGE = new FoodProperties.Builder().nutrition(4).saturationModifier(1.08f).build();
+
+    // A light raw vegetable: a bit less filling than an Apple (4 / 0.3), same saturation ratio.
+    public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
+
+    // A small raw vegetable, between a Potato (1 / 0.3) and a Carrot (3 / 0.6).
+    public static final FoodProperties ONION = new FoodProperties.Builder().nutrition(2).saturationModifier(0.4f).build();
 }

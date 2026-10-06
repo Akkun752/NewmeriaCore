@@ -14,6 +14,8 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -38,6 +40,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.CHILI_CROP.get(), createCropDrops(ModBlocks.CHILI_CROP.get(),
                 ModItems.CHILI_PEPPER.get(), ModItems.CHILI_SEEDS.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CHILI_CROP.get())
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BeetrootBlock.AGE, 3))));
+
+        // Fully grown: 2-4 onions, each count equally likely. Otherwise just the onion that was planted.
+        add(ModBlocks.ONIONS.get(), ripeOrElse(ModBlocks.ONIONS.get(), BeetrootBlock.AGE, 3,
+                ModItems.ONION.get(), 2, 4, ModItems.ONION.get()));
+        // Fully grown: 3-5 tomatoes, each count equally likely. Otherwise just the seed back.
+        add(ModBlocks.TOMATOES.get(), ripeOrElse(ModBlocks.TOMATOES.get(), CropBlock.AGE, 7,
+                ModItems.TOMATO.get(), 3, 5, ModItems.TOMATO_SEEDS.get()));
 
         add(ModBlocks.SAPPHIRE_ORE.get(), createOreDrop(ModBlocks.SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
         add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), createOreDrop(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
@@ -77,6 +86,17 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
                         .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))));
+    }
+
+    /** A crop dropping {@code min}-{@code max} of {@code ripeDrop} (uniformly, no Fortune bonus) at
+     *  {@code maxAge}, and a single {@code unripeDrop} at any earlier age. */
+    private LootTable.Builder ripeOrElse(Block crop, IntegerProperty ageProperty, int maxAge, Item ripeDrop, int min, int max, Item unripeDrop) {
+        return applyExplosionDecay(crop, LootTable.lootTable().withPool(LootPool.lootPool().add(
+                LootItem.lootTableItem(ripeDrop)
+                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop)
+                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, maxAge)))
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                        .otherwise(LootItem.lootTableItem(unripeDrop)))));
     }
 
     @Override

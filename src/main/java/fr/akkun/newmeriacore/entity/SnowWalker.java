@@ -2,6 +2,7 @@ package fr.akkun.newmeriacore.entity;
 
 import fr.akkun.newmeriacore.item.ModItems;
 import fr.akkun.newmeriacore.item.ModToolTiers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -44,6 +45,33 @@ public class SnowWalker extends Zombie {
         return Zombie.createAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0)
                 .add(Attributes.ARMOR, 2.0);
+    }
+
+    /**
+     * Chance for a daytime spawn attempt under the open sky to go through. A regular monster spawn
+     * attempt on the surface at night passes vanilla's light test roughly 27% of the time (the sky
+     * light roll times the night brightness roll), so 9% makes Snow Walkers about three times rarer
+     * by day than by night.
+     */
+    private static final float DAYLIGHT_SPAWN_CHANCE = 0.09F;
+
+    /** Natural spawn rule (biomes: see the {@code spawns_snow_walkers} biome tag and the
+     *  {@code add_snow_walker_spawns} biome modifier): the usual monster rule, plus a reduced chance
+     *  to spawn in broad daylight, which no vanilla monster gets - and only under the open sky. */
+    public static boolean checkSnowWalkerSpawnRules(
+            EntityType<SnowWalker> type, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random
+    ) {
+        // Surface only, never in caves (a monster spawner still works anywhere).
+        if (!EntitySpawnReason.isSpawner(spawnReason) && !level.canSeeSky(pos)) {
+            return false;
+        }
+        if (!checkMobSpawnRules(type, level, spawnReason, pos, random)) {
+            return false;
+        }
+        if (EntitySpawnReason.ignoresLightRequirements(spawnReason) || isDarkEnoughToSpawn(level, pos, random)) {
+            return true;
+        }
+        return level.getLevel().isBrightOutside() && random.nextFloat() < DAYLIGHT_SPAWN_CHANCE;
     }
 
     @Override

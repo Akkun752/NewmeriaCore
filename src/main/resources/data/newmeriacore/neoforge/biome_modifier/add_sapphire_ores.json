@@ -1,0 +1,11 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#newmeriacore:spawns_snow_walkers",
+  "features": [
+    "newmeriacore:ore_sapphire",
+    "newmeriacore:ore_sapphire_medium",
+    "newmeriacore:ore_sapphire_large",
+    "newmeriacore:ore_sapphire_buried"
+  ],
+  "step": "underground_ores"
+}

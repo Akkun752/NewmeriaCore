@@ -54,6 +54,8 @@ public class ModEntityTypes {
     private static void onRegisterSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         event.register(DUCK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Duck::checkDuckSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(SNOW_WALKER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                SnowWalker::checkSnowWalkerSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 
     public static void register(IEventBus eventBus) {

@@ -73,6 +73,23 @@ public class ModItems {
     public static final DeferredItem<Item> FRIED_DUCK = ITEMS.registerItem("fried_duck",
             properties -> new Item(properties.food(ModFoods.FRIED_DUCK)));
 
+    public static final DeferredItem<Item> RAW_SAUSAGE = ITEMS.registerItem("raw_sausage",
+            properties -> new Item(properties.food(ModFoods.RAW_SAUSAGE)));
+    public static final DeferredItem<Item> SAUSAGE = ITEMS.registerItem("sausage",
+            properties -> new Item(properties.food(ModFoods.SAUSAGE)));
+    public static final DeferredItem<Item> FRIED_SAUSAGE = ITEMS.registerItem("fried_sausage",
+            properties -> new Item(properties.food(ModFoods.FRIED_SAUSAGE)));
+
+    public static final DeferredItem<Item> TOMATO = ITEMS.registerItem("tomato",
+            properties -> new Item(properties.food(ModFoods.TOMATO)));
+
+    public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.registerItem("tomato_seeds",
+            properties -> new BlockItem(ModBlocks.TOMATOES.get(), properties));
+
+    // Planted directly, like a vanilla carrot or potato.
+    public static final DeferredItem<Item> ONION = ITEMS.registerItem("onion",
+            properties -> new BlockItem(ModBlocks.ONIONS.get(), properties.food(ModFoods.ONION)));
+
     public static final DeferredItem<Item> SAPPHIRE = ITEMS.registerItem("sapphire",
             properties -> new Item(properties));
 
@@ -276,11 +293,13 @@ public class ModItems {
     // (their normal tool behaviour always takes priority; casting is only a fallback), and never
     // breaks - UNBREAKABLE makes ItemStack.isDamageableItem() false, so the hurtAndBreak call on a
     // successful cast (or on brushing/finish-cooking) is a no-op.
+    // The Sky Spatula is also a weapon like every other Spatula, with the Golden Spatula's values.
     public static final DeferredItem<Item> VASSILY_BRUSH = ITEMS.registerItem("vassily_brush",
             properties -> new BrushWandItem(properties.rarity(Rarity.EPIC).durability(ToolMaterial.DIAMOND.durability())
                     .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
     public static final DeferredItem<Item> SKY_SPATULA = ITEMS.registerItem("sky_spatula",
-            properties -> new SpatulaWandItem(properties.rarity(Rarity.EPIC).durability(ToolMaterial.DIAMOND.durability())
+            properties -> new SpatulaWandItem(properties.rarity(Rarity.EPIC)
+                    .sword(ModToolTiers.halfDurability(ToolMaterial.GOLD), 3.0F, -2.4F)
                     .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)));
 
     public static ResourceKey<Item> getRK(Item item) {

@@ -23,6 +23,13 @@ public class ModDataMapProvider extends DataMapProvider {
                 .add(ModItems.TALL_DRY_BLACK_GRASS, new FurnaceFuel(100), false);
         builder(NeoForgeDataMaps.COMPOSTABLES)
                 .add(ModItems.SHORT_DRY_BLACK_GRASS, new Compostable(0.3F), false)
-                .add(ModItems.TALL_DRY_BLACK_GRASS, new Compostable(0.3F), false);
+                .add(ModItems.TALL_DRY_BLACK_GRASS, new Compostable(0.3F), false)
+                // Same chances as vanilla: 65% for a fruit or vegetable (apple, carrot, potato...), 30% for seeds.
+                .add(ModItems.PEER, new Compostable(0.65F), false)
+                .add(ModItems.TOMATO, new Compostable(0.65F), false)
+                .add(ModItems.ONION, new Compostable(0.65F), false)
+                .add(ModItems.CHILI_PEPPER, new Compostable(0.65F), false)
+                .add(ModItems.TOMATO_SEEDS, new Compostable(0.3F), false)
+                .add(ModItems.CHILI_SEEDS, new Compostable(0.3F), false);
     }
 }

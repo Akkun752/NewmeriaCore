@@ -17,7 +17,8 @@ public class FryingRecipes {
             Items.PORKCHOP, ModItems.FRIED_PORKCHOP.get(),
             Items.RABBIT, ModItems.FRIED_RABBIT.get(),
             Items.SALMON, ModItems.FRIED_SALMON.get(),
-            ModItems.RAW_DUCK.get(), ModItems.FRIED_DUCK.get()
+            ModItems.RAW_DUCK.get(), ModItems.FRIED_DUCK.get(),
+            ModItems.RAW_SAUSAGE.get(), ModItems.FRIED_SAUSAGE.get()
     );
 
     /** @return the fried result for a raw food item, or null if it isn't fryable. */

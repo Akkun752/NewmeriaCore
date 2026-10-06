@@ -4,7 +4,9 @@ import fr.akkun.newmeriacore.NewmeriaCore;
 import fr.akkun.newmeriacore.block.custom.RiceCropBlock;
 import fr.akkun.newmeriacore.block.custom.ChiliCropBlock;
 import fr.akkun.newmeriacore.block.custom.OilCauldronBlock;
+import fr.akkun.newmeriacore.block.custom.OnionCropBlock;
 import fr.akkun.newmeriacore.block.custom.OilFluidBlock;
+import fr.akkun.newmeriacore.block.custom.TomatoCropBlock;
 import fr.akkun.newmeriacore.block.custom.ShortDryBlackGrassBlock;
 import fr.akkun.newmeriacore.block.custom.TallDryBlackGrassBlock;
 import fr.akkun.newmeriacore.fluid.ModFluids;
@@ -85,6 +87,14 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> CHILI_CROP = BLOCKS.registerBlock("chili_crop",
             properties -> new ChiliCropBlock(properties.randomTicks().sound(SoundType.CROP)
+                    .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> ONIONS = BLOCKS.registerBlock("onions",
+            properties -> new OnionCropBlock(properties.randomTicks().sound(SoundType.CROP)
+                    .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+
+    public static final DeferredBlock<Block> TOMATOES = BLOCKS.registerBlock("tomatoes",
+            properties -> new TomatoCropBlock(properties.randomTicks().sound(SoundType.CROP)
                     .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> SAPPHIRE_ORE = BLOCKS.registerBlock("sapphire_ore",

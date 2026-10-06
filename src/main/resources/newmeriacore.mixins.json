@@ -7,7 +7,8 @@
     "BiomeSourceAccessor",
     "MobMixin",
     "MultiNoiseBiomeSourceParameterListAccessor",
-    "NoiseGeneratorSettingsAccessor"
+    "NoiseGeneratorSettingsAccessor",
+    "VillagerHostilesSensorMixin"
   ],
   "client": [
     "client.EnchantmentScreenMixin",

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "newmeriacore:farmer/1/emerald_rice_shoot",
+    "newmeriacore:farmer/1/emerald_tomato",
+    "newmeriacore:farmer/1/emerald_onion",
+    "newmeriacore:farmer/1/emerald_chili_pepper"
+  ]
+}

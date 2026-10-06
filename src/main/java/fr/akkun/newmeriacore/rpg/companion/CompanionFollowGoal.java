@@ -45,10 +45,23 @@ public class CompanionFollowGoal extends Goal {
         return ownerId != null ? companion.level().getPlayerByUUID(ownerId) : null;
     }
 
+    /**
+     * A companion with a target is left alone to fight it: this goal claims movement at a higher
+     * priority than some forms' own attack goal (the wolf's), which would otherwise never get to
+     * run more than 2 blocks away from the owner. Past teleport range the owner still wins, so a
+     * fight can't strand the companion far behind.
+     */
+    private boolean isBusyFighting(LivingEntity owner) {
+        return companion.getTarget() != null && companion.distanceToSqr(owner) < TELEPORT_DISTANCE_SQR;
+    }
+
     @Override
     public boolean canUse() {
         LivingEntity owner = findOwner();
         if (owner == null || companion.isVehicle()) {
+            return false;
+        }
+        if (isBusyFighting(owner)) {
             return false;
         }
         if (companion.distanceToSqr(owner) < START_DISTANCE * START_DISTANCE) {
@@ -61,6 +74,9 @@ public class CompanionFollowGoal extends Goal {
     @Override
     public boolean canContinueToUse() {
         if (owner == null || !owner.isAlive()) {
+            return false;
+        }
+        if (isBusyFighting(owner)) {
             return false;
         }
         return companion.distanceToSqr(owner) > STOP_DISTANCE * STOP_DISTANCE;
