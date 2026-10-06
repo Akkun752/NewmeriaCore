@@ -90,6 +90,10 @@ public class ModItems {
     public static final DeferredItem<Item> ONION = ITEMS.registerItem("onion",
             properties -> new BlockItem(ModBlocks.ONIONS.get(), properties.food(ModFoods.ONION)));
 
+    // The book every player gets when the server opens. Opening it and its text: see ManualClientEvents.
+    public static final DeferredItem<Item> NEWMERIA_MANUAL = ITEMS.registerItem("newmeria_manual",
+            properties -> new Item(properties.stacksTo(1)));
+
     public static final DeferredItem<Item> SAPPHIRE = ITEMS.registerItem("sapphire",
             properties -> new Item(properties));
 
@@ -159,22 +163,23 @@ public class ModItems {
             properties -> new HammerItem(properties.pickaxe(ModToolTiers.SAPPHIRE, 1.0F, -2.8F)));
 
     // Casts the selected spell on right click (see WandItem); durability = same as that tier's tool.
+    // Enchantable like a tool of the same material, so Unbreaking can come from an enchanting table.
     public static final DeferredItem<Item> WOODEN_WAND = ITEMS.registerItem("wooden_wand",
-            properties -> new WandItem(properties.durability(ToolMaterial.WOOD.durability())));
+            properties -> new WandItem(properties.durability(ToolMaterial.WOOD.durability()).enchantable(ToolMaterial.WOOD.enchantmentValue())));
     public static final DeferredItem<Item> STONE_WAND = ITEMS.registerItem("stone_wand",
-            properties -> new WandItem(properties.durability(ToolMaterial.STONE.durability())));
+            properties -> new WandItem(properties.durability(ToolMaterial.STONE.durability()).enchantable(ToolMaterial.STONE.enchantmentValue())));
     public static final DeferredItem<Item> COPPER_WAND = ITEMS.registerItem("copper_wand",
-            properties -> new WandItem(properties.durability(ToolMaterial.COPPER.durability())));
+            properties -> new WandItem(properties.durability(ToolMaterial.COPPER.durability()).enchantable(ToolMaterial.COPPER.enchantmentValue())));
     public static final DeferredItem<Item> IRON_WAND = ITEMS.registerItem("iron_wand",
-            properties -> new WandItem(properties.durability(ToolMaterial.IRON.durability())));
+            properties -> new WandItem(properties.durability(ToolMaterial.IRON.durability()).enchantable(ToolMaterial.IRON.enchantmentValue())));
     public static final DeferredItem<Item> GOLDEN_WAND = ITEMS.registerItem("golden_wand",
-            properties -> new WandItem(properties.durability(ToolMaterial.GOLD.durability())));
+            properties -> new WandItem(properties.durability(ToolMaterial.GOLD.durability()).enchantable(ToolMaterial.GOLD.enchantmentValue())));
     public static final DeferredItem<Item> DIAMOND_WAND = ITEMS.registerItem("diamond_wand",
-            properties -> new WandItem(properties.durability(ToolMaterial.DIAMOND.durability())));
+            properties -> new WandItem(properties.durability(ToolMaterial.DIAMOND.durability()).enchantable(ToolMaterial.DIAMOND.enchantmentValue())));
     public static final DeferredItem<Item> NETHERITE_WAND = ITEMS.registerItem("netherite_wand",
-            properties -> new WandItem(properties.fireResistant().durability(ToolMaterial.NETHERITE.durability())));
+            properties -> new WandItem(properties.fireResistant().durability(ToolMaterial.NETHERITE.durability()).enchantable(ToolMaterial.NETHERITE.enchantmentValue())));
     public static final DeferredItem<Item> SAPPHIRE_WAND = ITEMS.registerItem("sapphire_wand",
-            properties -> new WandItem(properties.durability(ModToolTiers.SAPPHIRE.durability())));
+            properties -> new WandItem(properties.durability(ModToolTiers.SAPPHIRE.durability()).enchantable(ModToolTiers.SAPPHIRE.enchantmentValue())));
 
     public static final DeferredItem<Item> SAPPHIRE_HELMET = ITEMS.registerItem("sapphire_helmet",
             properties -> new Item(properties.humanoidArmor(ModArmorMaterials.SAPPHIRE, ArmorType.HELMET)));

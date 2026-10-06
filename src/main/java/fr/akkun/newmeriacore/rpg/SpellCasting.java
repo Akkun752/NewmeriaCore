@@ -1,11 +1,15 @@
 package fr.akkun.newmeriacore.rpg;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import fr.akkun.newmeriacore.rpg.companion.network.OpenCompanionMenuPayload;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
@@ -16,7 +20,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.equine.AbstractHorse;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.level.portal.TeleportTransition;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.border.WorldBorder;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -25,6 +31,7 @@ import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /** Server-side spell execution and (in-memory, non-persisted) per-player cooldown tracking. */
@@ -33,6 +40,10 @@ public class SpellCasting {
     private static final Map<UUID, Long> COOLDOWN_END_TICK = new HashMap<>();
     // Damage/blast size multiplier over vanilla lightning/ghast-fireball defaults.
     private static final float POWER_MULTIPLIER = 3.0F;
+    // Teleport spell: how far from the centre of the world a spot may be picked, and how many random
+    // spots are tried (most failures are oceans) before giving up. Each try can generate a chunk.
+    private static final double TELEPORT_RADIUS = 10_000.0;
+    private static final int TELEPORT_ATTEMPTS = 10;
 
     /** @return whether a spell was actually cast (false if none selected, locked, or still on cooldown). */
     public static boolean cast(ServerPlayer player) {
@@ -58,7 +69,14 @@ public class SpellCasting {
 
         switch (spell) {
             case LIGHTNING -> castLightning(player);
-            case TELEPORT -> castTeleport(player);
+            case TELEPORT -> {
+                if (!castTeleport(player)) {
+                    // Nothing happened: no cooldown (and, for the caller, no wand durability) spent.
+                    COOLDOWN_END_TICK.remove(player.getUUID());
+                    player.sendSystemMessage(Component.translatable("rpg.newmeriacore.spell.teleport.failed"), true);
+                    return false;
+                }
+            }
             case FRIENDSHIP -> castFriendship(player);
             case FIREBALL -> castFireball(player);
             case INK_FRIEND -> castInkFriend(player);
@@ -100,16 +118,63 @@ public class SpellCasting {
         level.addFreshEntity(bolt);
     }
 
-    private static void castTeleport(ServerPlayer player) {
-        TeleportTransition transition = player.findRespawnPositionAndUseSpawnBlock(false, TeleportTransition.DO_NOTHING);
-        ServerPlayer teleported = player.teleport(transition);
-        if (teleported == null) {
-            return;
+    /**
+     * Random teleport: sends the player to a random safe spot on the surface of the dimension they
+     * are in (of the Overworld from a dimension with a ceiling such as the Nether, which has no
+     * surface to speak of).
+     *
+     * @return false if no safe spot was found within {@link #TELEPORT_ATTEMPTS} tries
+     */
+    private static boolean castTeleport(ServerPlayer player) {
+        ServerLevel level = player.level().dimensionType().hasCeiling() ? player.level().getServer().overworld() : player.level();
+        WorldBorder border = level.getWorldBorder();
+        // Never closer than a chunk to the world border.
+        double radius = Math.min(TELEPORT_RADIUS, border.getSize() / 2.0 - 16.0);
+        if (radius <= 0.0) {
+            return false;
         }
-        ServerLevel level = teleported.level();
-        Vec3 pos = teleported.position();
-        level.sendParticles(ParticleTypes.PORTAL, pos.x, pos.y + 1.0, pos.z, 32, 0.5, 1.0, 0.5, 0.3);
-        level.playSound(null, pos.x, pos.y, pos.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
+        RandomSource random = player.getRandom();
+        for (int attempt = 0; attempt < TELEPORT_ATTEMPTS; attempt++) {
+            int x = Mth.floor(border.getCenterX() + (random.nextDouble() * 2.0 - 1.0) * radius);
+            int z = Mth.floor(border.getCenterZ() + (random.nextDouble() * 2.0 - 1.0) * radius);
+            // Loads (generating it if needed) the chunk the spot is in.
+            level.getChunk(x >> 4, z >> 4);
+            BlockPos feet = new BlockPos(x, level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z), z);
+            if (!isSafeTeleportSpot(level, feet)) {
+                continue;
+            }
+            if (!player.teleportTo(level, feet.getX() + 0.5, feet.getY(), feet.getZ() + 0.5, Set.of(), player.getYRot(), player.getXRot(), true)) {
+                return false;
+            }
+            Vec3 pos = player.position();
+            level.sendParticles(ParticleTypes.PORTAL, pos.x, pos.y + 1.0, pos.z, 32, 0.5, 1.0, 0.5, 0.3);
+            level.playSound(null, pos.x, pos.y, pos.z, SoundEvents.PLAYER_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param feet the block the player would stand in, the first one above the surface
+     * @return whether that is on top of a solid, dry block, with free space all around: nothing to
+     *         collide with and no liquid in the 3x3 blocks around the player, at feet and head height
+     */
+    private static boolean isSafeTeleportSpot(ServerLevel level, BlockPos feet) {
+        BlockPos ground = feet.below();
+        if (!level.isInsideBuildHeight(ground) || !level.getWorldBorder().isWithinBounds(feet)) {
+            return false;
+        }
+        BlockState groundState = level.getBlockState(ground);
+        if (!groundState.isFaceSturdy(level, ground, Direction.UP) || !groundState.getFluidState().isEmpty()) {
+            return false;
+        }
+        for (BlockPos around : BlockPos.betweenClosed(feet.offset(-1, 0, -1), feet.offset(1, 1, 1))) {
+            BlockState state = level.getBlockState(around);
+            if (!state.getCollisionShape(level, around).isEmpty() || !state.getFluidState().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /** Instantly tames whatever tameable mob the player is looking at, no food/riding grind needed. */

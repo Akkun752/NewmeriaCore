@@ -12,11 +12,11 @@ import java.util.Locale;
  *  wiring needed. Cooldown is not per-spell anymore - see {@link SpellCasting} for the general
  *  Magic-level cooldown. */
 public enum RpgSpell {
-    LIGHTNING(1, "rpg.newmeriacore.spell.lightning"),
-    TELEPORT(2, "rpg.newmeriacore.spell.teleport"),
-    FRIENDSHIP(3, "rpg.newmeriacore.spell.friendship"),
-    FIREBALL(4, "rpg.newmeriacore.spell.fireball"),
-    INK_FRIEND(5, "rpg.newmeriacore.spell.ink_friend");
+    FRIENDSHIP(1, "rpg.newmeriacore.spell.friendship"),
+    LIGHTNING(2, "rpg.newmeriacore.spell.lightning"),
+    FIREBALL(3, "rpg.newmeriacore.spell.fireball"),
+    INK_FRIEND(4, "rpg.newmeriacore.spell.ink_friend"),
+    TELEPORT(5, "rpg.newmeriacore.spell.teleport");
 
     private final int requiredMagicLevel;
     private final String translationKey;

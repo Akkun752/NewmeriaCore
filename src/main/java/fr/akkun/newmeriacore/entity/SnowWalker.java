@@ -7,6 +7,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.SpawnPlacementType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -24,8 +26,12 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.zombie.Zombie;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -48,30 +54,62 @@ public class SnowWalker extends Zombie {
     }
 
     /**
-     * Chance for a daytime spawn attempt under the open sky to go through. A regular monster spawn
-     * attempt on the surface at night passes vanilla's light test roughly 27% of the time (the sky
-     * light roll times the night brightness roll), so 9% makes Snow Walkers about three times rarer
-     * by day than by night.
+     * Chance for a spawn attempt to go through, by night and by day. A regular monster spawn attempt
+     * on the surface passes the vanilla light test about 27% of the time at night (the sky light roll
+     * times the night brightness roll): the night value is twice that, so Snow Walkers are twice as
+     * common, relative to other monsters, as their spawn weight alone says. By day they are three
+     * times rarer than by night.
      */
-    private static final float DAYLIGHT_SPAWN_CHANCE = 0.09F;
+    private static final float NIGHT_SPAWN_CHANCE = 0.54F;
+    private static final float DAYLIGHT_SPAWN_CHANCE = 0.18F;
+    /** Brightest block light (torches, lamps... not the sky) a Snow Walker still spawns in. */
+    private static final int MAX_SPAWN_BLOCK_LIGHT = 7;
 
-    /** Natural spawn rule (biomes: see the {@code spawns_snow_walkers} biome tag and the
-     *  {@code add_snow_walker_spawns} biome modifier): the usual monster rule, plus a reduced chance
-     *  to spawn in broad daylight, which no vanilla monster gets - and only under the open sky. */
+    /** Whether a mob standing at {@code feet} stands on snow or ice of any kind: a snow layer it
+     *  stands in, or a snow block, powder snow or any ice right below. */
+    public static boolean isOnSnowOrIce(BlockGetter level, BlockPos feet) {
+        BlockState below = level.getBlockState(feet.below());
+        return level.getBlockState(feet).is(BlockTags.SNOW) || below.is(BlockTags.SNOW) || below.is(BlockTags.ICE);
+    }
+
+    /**
+     * Where a Snow Walker fits: the vanilla "on ground" test, except that snow and ice count as
+     * ground whatever vanilla says about them (plain ice only lets polar bears spawn, powder snow
+     * nothing at all).
+     */
+    public static final SpawnPlacementType ON_SNOW_OR_ICE = (level, pos, type) -> {
+        if (type == null || !level.getWorldBorder().isWithinBounds(pos) || !isOnSnowOrIce(level, pos)) {
+            return false;
+        }
+        BlockPos above = pos.above();
+        BlockState feetState = level.getBlockState(pos);
+        BlockState headState = level.getBlockState(above);
+        return NaturalSpawner.isValidEmptySpawnBlock(level, pos, feetState, feetState.getFluidState(), type)
+                && NaturalSpawner.isValidEmptySpawnBlock(level, above, headState, headState.getFluidState(), type);
+    };
+
+    /**
+     * Natural spawn rule. Snow Walkers can appear in any biome (see {@code SnowWalkerEvents}), on
+     * snow or ice only, under the open sky, by night and - less often - by day. Daylight never
+     * stops them; strong light from blocks does.
+     */
     public static boolean checkSnowWalkerSpawnRules(
             EntityType<SnowWalker> type, ServerLevelAccessor level, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random
     ) {
-        // Surface only, never in caves (a monster spawner still works anywhere).
-        if (!EntitySpawnReason.isSpawner(spawnReason) && !level.canSeeSky(pos)) {
-            return false;
-        }
-        if (!checkMobSpawnRules(type, level, spawnReason, pos, random)) {
-            return false;
-        }
-        if (EntitySpawnReason.ignoresLightRequirements(spawnReason) || isDarkEnoughToSpawn(level, pos, random)) {
+        // A monster spawner works anywhere.
+        if (EntitySpawnReason.isSpawner(spawnReason)) {
             return true;
         }
-        return level.getLevel().isBrightOutside() && random.nextFloat() < DAYLIGHT_SPAWN_CHANCE;
+        if (!level.canSeeSky(pos) || !isOnSnowOrIce(level, pos)) {
+            return false;
+        }
+        if (EntitySpawnReason.ignoresLightRequirements(spawnReason)) {
+            return true;
+        }
+        if (level.getBrightness(LightLayer.BLOCK, pos) > MAX_SPAWN_BLOCK_LIGHT) {
+            return false;
+        }
+        return random.nextFloat() < (level.getLevel().isBrightOutside() ? DAYLIGHT_SPAWN_CHANCE : NIGHT_SPAWN_CHANCE);
     }
 
     @Override

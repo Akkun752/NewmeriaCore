@@ -1,4 +1,6 @@
 {
+  "item.newmeriacore.newmeria_manual": "Manuel de Newmeria",
+  "enchantment.newmeriacore.smelt": "Cuisson",
   "item.newmeriacore.peer": "Poire",
   "item.newmeriacore.rice_shoot": "Pousse de riz",
   "item.newmeriacore.rice": "Riz",
@@ -168,6 +170,7 @@
   "rpg.newmeriacore.spell.fireball": "Boule de feu",
   "rpg.newmeriacore.spell.ink_friend": "Compagnon d'encre",
   "rpg.newmeriacore.spell.on_cooldown": "%s est en recharge (%ss restantes)",
+  "rpg.newmeriacore.spell.teleport.failed": "Aucun endroit sûr trouvé, réessayez.",
 
   "gui.newmeriacore.magic_wheel.title": "Sorts de magie",
 
@@ -187,5 +190,19 @@
   "commands.newmeriacore.rpg.reset": "Progression RPG totalement réinitialisée pour %s",
 
   "commands.newmeriacore.colorname.success": "Couleur de %s définie sur %s",
-  "commands.newmeriacore.colorname.invalid_color": "Couleur inconnue : %s"
+  "commands.newmeriacore.colorname.invalid_color": "Couleur inconnue : %s",
+
+  "commands.newmeriacore.sethome.success": "Home défini ici.",
+  "commands.newmeriacore.sethome.already_set": "Vous avez déjà un home. Utilisez /delhome pour le supprimer avant d'en définir un nouveau.",
+  "commands.newmeriacore.warp.success": "Téléporté au warp %s.",
+  "commands.newmeriacore.warp.unknown": "Aucun warp nommé %s.",
+  "commands.newmeriacore.warp_add.success": "Warp %s créé ici.",
+  "commands.newmeriacore.warp_add.already_exists": "Un warp nommé %s existe déjà. Utilisez /warp_del pour le supprimer avant de le recréer.",
+  "commands.newmeriacore.warp_del.success": "Warp %s supprimé.",
+  "commands.newmeriacore.home.success": "Téléporté à votre home.",
+  "commands.newmeriacore.home.none": "Vous n'avez pas de home. Utilisez /sethome pour en définir un.",
+  "commands.newmeriacore.home.missing_dimension": "La dimension de destination n'existe plus.",
+  "commands.newmeriacore.delhome.success": "Home supprimé.",
+  "commands.newmeriacore.back.success": "Retour à votre position précédente.",
+  "commands.newmeriacore.back.none": "Aucune position précédente à laquelle revenir."
 }

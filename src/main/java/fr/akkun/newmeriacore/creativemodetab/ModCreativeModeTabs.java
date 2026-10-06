@@ -21,6 +21,7 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SAPPHIRE.get()))
                     .title(Component.translatable("creativetab.newmeriacore.newmeria"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.NEWMERIA_MANUAL);
                         output.accept(ModItems.PEER);
                         output.accept(ModItems.TOMATO);
                         output.accept(ModItems.TOMATO_SEEDS);

@@ -1,4 +1,6 @@
 {
+  "item.newmeriacore.newmeria_manual": "Newmeria Manual",
+  "enchantment.newmeriacore.smelt": "Smelt",
   "item.newmeriacore.peer": "Peer",
   "item.newmeriacore.rice_shoot": "Rice Shoot",
   "item.newmeriacore.rice": "Rice",
@@ -168,6 +170,7 @@
   "rpg.newmeriacore.spell.fireball": "Fireball",
   "rpg.newmeriacore.spell.ink_friend": "Ink Friend",
   "rpg.newmeriacore.spell.on_cooldown": "%s is on cooldown (%ss left)",
+  "rpg.newmeriacore.spell.teleport.failed": "No safe spot found, try again.",
 
   "gui.newmeriacore.magic_wheel.title": "Magic Spells",
 
@@ -187,5 +190,19 @@
   "commands.newmeriacore.rpg.reset": "Reset all RPG progress for %s",
 
   "commands.newmeriacore.colorname.success": "%s's name color set to %s",
-  "commands.newmeriacore.colorname.invalid_color": "Unknown color: %s"
+  "commands.newmeriacore.colorname.invalid_color": "Unknown color: %s",
+
+  "commands.newmeriacore.sethome.success": "Home set here.",
+  "commands.newmeriacore.sethome.already_set": "You already have a home. Use /delhome to delete it before setting a new one.",
+  "commands.newmeriacore.warp.success": "Teleported to warp %s.",
+  "commands.newmeriacore.warp.unknown": "There is no warp named %s.",
+  "commands.newmeriacore.warp_add.success": "Warp %s created here.",
+  "commands.newmeriacore.warp_add.already_exists": "A warp named %s already exists. Use /warp_del to delete it before creating it again.",
+  "commands.newmeriacore.warp_del.success": "Warp %s deleted.",
+  "commands.newmeriacore.home.success": "Teleported to your home.",
+  "commands.newmeriacore.home.none": "You have no home. Use /sethome to set one.",
+  "commands.newmeriacore.home.missing_dimension": "The destination dimension no longer exists.",
+  "commands.newmeriacore.delhome.success": "Home deleted.",
+  "commands.newmeriacore.back.success": "Returned to your previous position.",
+  "commands.newmeriacore.back.none": "There is no previous position to return to."
 }

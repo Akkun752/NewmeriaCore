@@ -1,6 +1,7 @@
 package fr.akkun.newmeriacore.rpg;
 
 import fr.akkun.newmeriacore.NewmeriaCore;
+import fr.akkun.newmeriacore.entity.Saphira;
 import fr.akkun.newmeriacore.entity.SnowWalker;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,6 +20,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.player.ItemFishedEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 
@@ -97,9 +99,23 @@ public class RpgEvents {
         }
     }
 
+    private static final int POINTS_PER_CATCH = 3;
+
+    /** Every catch reeled in with a fishing rod (fish, junk or treasure alike) is worth RPG points. */
+    @SubscribeEvent
+    public static void onItemFished(ItemFishedEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            grantPoints(player, POINTS_PER_CATCH);
+        }
+    }
+
     private static int pointsForKill(LivingEntity victim) {
         if (victim instanceof Player player) {
             return player.getData(RpgAttachments.RPG_DATA).level() * 10;
+        }
+        // Before the Ender Dragon check: Saphira is one.
+        if (victim instanceof Saphira) {
+            return 200;
         }
         if (victim instanceof EnderDragon || victim instanceof WitherBoss
                 || victim instanceof Warden) {

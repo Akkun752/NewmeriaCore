@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "#newmeriacore:spawns_snow_walkers",
+  "biomes": "#newmeriacore:has_sapphire_ore",
   "features": [
     "newmeriacore:ore_sapphire",
     "newmeriacore:ore_sapphire_medium",

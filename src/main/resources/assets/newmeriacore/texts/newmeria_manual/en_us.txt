@@ -1,0 +1,61 @@
+§lNewmeria Manual§r
+
+Welcome to Newmeria!
+
+This manual gathers everything you need to know to get your adventure off to a good start.
+---
+§lNew meals§r
+
+The world of Newmeria now has new foods and new crops. Visit a farmer to buy §1rice§r, §1tomatoes§r, §1onions§r and §1chili peppers§r.
+
+Birch trees now give you §1pears§r, just as oak trees give apples.
+
+You can also cut your pork into §lsausages§r.
+
+Mixing these new foods with the old ones will let you create your own meals.
+
+There is also a new way of cooking: §1frying§r. Place a cauldron filled with §1oil§r above a heat source, then throw your raw food into the oil. That should fry it, for you to enjoy.
+---
+§lNew tools§r
+
+Newmeria now lets you craft three new kinds of tools: §1spatulas§r, §1hammers§r and §1wands§r.
+
+§1Spatulas§r can be used in combat, but they are mostly useful for cooking food faster on a campfire.
+
+§1Hammers§r are improved pickaxes that let you dig three blocks by three.
+
+§1Wands§r will let you cast different spells, depending on your Magic level.
+
+You can get a new enchantment on your pickaxes and hammers: §1Smelt§r, which instantly smelts the blocks you break.
+---
+§lNew environments§r
+
+Newmeria now lets you build with two new sets of blocks: §1marble§r and §1black sand§r.
+
+§1Marble§r is fairly easy to find in the mountains or in caves.
+
+§1Black sand§r can be collected in the new §1black deserts§r, where you can also find §1ducks§r. Legend has it that keeping a golden duck at home brings eternal happiness.
+---
+§lNew abilities§r
+
+You now have a new experience bar: the §1RPG bar§r. You earn RPG points by doing various things, such as killing monsters or fishing.
+
+When you gain an §1RPG level§r, you can raise one stat by one level in the RPG menu, opened with the §1K key§r.
+
+The §1Strength§r, §1Resistance§r, §1Speed§r and §1Magic§r stats each give you new abilities to make you stronger and more powerful.
+
+You can open your §1spell wheel§r with the §1M key§r.
+---
+§lNew commands§r
+
+§1/sethome§r: set your home
+§1/home§r: teleport to your home
+§1/delhome§r: delete your home
+§1/back§r: return to where you died
+§1/warp <name>§r: go to a warp
+---
+§lHave a great Season 2§r
+
+I hope this guide will be useful to you. Have a wonderful adventure in this Season 2 of Newmeria, and above all: have fun!
+
+- Akkun

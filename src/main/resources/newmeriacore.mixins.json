@@ -15,6 +15,7 @@
   ],
   "client": [
     "client.EnchantmentScreenMixin",
+    "client.PlayerTabOverlayMixin",
     "client.WolfRendererMixin",
     "client.AbstractZombieRendererMixin",
     "client.HorseRendererMixin",

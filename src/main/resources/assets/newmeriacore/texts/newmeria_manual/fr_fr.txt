@@ -1,0 +1,61 @@
+§lManuel de Newmeria§r
+
+Bienvenue sur Newmeria !
+
+Ce manuel rassemble toutes les informations nécessaires pour bien débuter votre aventure.
+---
+§lDe nouveaux repas§r
+
+Le monde de Newmeria possède désormais de nouveaux aliments et de nouvelles plantations. Rendez-vous auprès d'un agriculteur pour acheter du §1riz§r, des §1tomates§r, des §1oignons§r et du §1piment§r.
+
+Les arbres de bouleau vous permettent désormais d'obtenir des §1poires§r, au même titre que les chênes offrent des pommes.
+
+Vous pouvez également découper votre viande de porc en §lsaucisses§r.
+
+Mélanger ces nouveaux aliments avec les anciens vous permettra de créer vos propre repas.
+
+Il existe d'ailleurs une nouvelle méthode de cuisson : la §1friture§r. Placez un chaudron rempli d'§1huile§r au dessus d'une source de chaleur puis jetez votre nourriture crue dans l'huile. Cela devrait la frire, afin que vous puissiez vous régaler.
+---
+§lDe nouveaux outils§r
+
+Newmeria vous permet désormais de créer trois nouveaux types d'outils : les §1spatules§r, les §1marteaux§r et les §1baguettes§r.
+
+Les §1spatules§r peuvent vous servir en combat, mais sont surtout utiles pour cuire de la nourriture plus rapidement avec un feu de camp.
+
+Les §1marteaux§r sont des pioches améliorées qui vous permettent de creuser trois blocs par trois.
+
+Les §1baguettes§r vous permettront de lancer différents sorts, en fonction de votre niveau en Magie.
+
+Vous pourrez obtenir un nouvel enchantement sur vos pioches et marteaux : §1cuisson§r, qui vous permettra de cuire instantanément les blocs que vous casserez.
+---
+§lDe nouveaux environnements§r
+
+Newmeria vous offre désormais la possibilité de construire avec deux nouveaux ensembles de blocs : le §1marbre§r et le §1sable noir§r.
+
+Le §1marbre§r est trouvable assez facilement en montagne ou dans les grottes.
+
+Le §1sable noir§r est récupérable dans les nouveaux §1déserts noirs§r, dans lesquels vous pourrez d'ailleurs trouver des §1canards§r. Une légende raconte que posséder un canard doré chez soi apporte le bonheur éternel.
+---
+§lDe nouvelles capacités§r
+
+Vous avez désormais une nouvelle barre d'expérience : la §1barre RPG§r. Vous gagnez des points RPG en réalisant différentes actions, comme tuer des monstres ou pêcher.
+
+Lorsque vous montez d'un §1niveau RPG§r, vous pourrez augmenter une statistique d'un niveau dans le menu RPG, accessible avec la §1touche K§r.
+
+Les statistiques §1Force§r, §1Résistance§r, §1Vitesse§r et §1Magie§r vous offrent toutes de nouvelles capacités pour vous renforcer et devenir plus puissant.
+
+Vous pouvez accéder à votre §1roue des sorts§r avec la §1touche M§r.
+---
+§lDe nouvelles commandes§r
+
+§1/sethome§r : définir son home
+§1/home§r : se téléporter à son home
+§1/delhome§r : Supprimer son home
+§1/back§r : revenir au lieu de sa mort
+§1/warp <nom>§r : aller à un warp
+---
+§lBonne Saison 2§r
+
+J'espère que ce guide vous sera utile. Passez une excellente aventure en cette Saison 2 de Newmeria, et surtout : amusez-vous !
+
+- Akkun
