@@ -45,8 +45,18 @@ public class ModEntityTypes {
                     .clientTrackingRange(10)
                     .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "duck"))));
 
+    // Same dimensions as the vanilla Ender Dragon.
+    public static final DeferredHolder<EntityType<?>, EntityType<Saphira>> SAPHIRA = ENTITY_TYPES.register("saphira",
+            () -> EntityType.Builder.<Saphira>of(Saphira::new, MobCategory.MONSTER)
+                    .fireImmune()
+                    .sized(16.0F, 8.0F)
+                    .passengerAttachments(3.0F)
+                    .clientTrackingRange(10)
+                    .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "saphira"))));
+
     private static void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
         event.put(DUCK.get(), Duck.createAttributes().build());
+        event.put(SAPHIRA.get(), Saphira.createAttributes().build());
         event.put(SNOW_WALKER.get(), SnowWalker.createAttributes().build());
         event.put(HELL_ZOMBIE.get(), HellZombie.createAttributes().build());
     }

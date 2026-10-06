@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": "newmeriacore:sapphire_block",
+    "E": "minecraft:dragon_egg",
+    "S": "newmeriacore:sapphire"
+  },
+  "pattern": [
+    "SBS",
+    "BEB",
+    "SBS"
+  ],
+  "result": {
+    "id": "newmeriacore:saphira_egg"
+  }
+}

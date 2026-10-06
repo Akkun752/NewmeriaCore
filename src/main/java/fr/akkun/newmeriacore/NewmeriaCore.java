@@ -8,6 +8,7 @@ import fr.akkun.newmeriacore.creativemodetab.ModCreativeModeTabs;
 import fr.akkun.newmeriacore.data.ModDataComponents;
 import fr.akkun.newmeriacore.effect.ModEffects;
 import fr.akkun.newmeriacore.entity.ModEntityTypes;
+import fr.akkun.newmeriacore.entity.SaphiraSummoning;
 import fr.akkun.newmeriacore.worldgen.ModFeatures;
 import fr.akkun.newmeriacore.fluid.ModFluids;
 import fr.akkun.newmeriacore.frying.FryingAttachments;
@@ -64,6 +65,7 @@ public class NewmeriaCore {
 
         ModEntityTypes.register(modEventBus);
         ModFeatures.register(modEventBus);
+        SaphiraSummoning.register(modEventBus);
         ModRecipeSerializers.register(modEventBus);
 
         RpgAttachments.register(modEventBus);

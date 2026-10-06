@@ -105,6 +105,9 @@ public class ModItems {
     public static final DeferredItem<Item> DUCK_SPAWN_EGG = ITEMS.registerItem("duck_spawn_egg",
             properties -> new SpawnEggItem(properties.spawnEgg(ModEntityTypes.DUCK.get())));
 
+    public static final DeferredItem<Item> SAPHIRA_SPAWN_EGG = ITEMS.registerItem("saphira_spawn_egg",
+            properties -> new SpawnEggItem(properties.spawnEgg(ModEntityTypes.SAPHIRA.get())));
+
     public static final DeferredItem<Item> WOODEN_SPATULA = ITEMS.registerItem("wooden_spatula",
             properties -> new SpatulaItem(properties.sword(ModToolTiers.halfDurability(ToolMaterial.WOOD), 3.0F, -2.4F)));
     public static final DeferredItem<Item> STONE_SPATULA = ITEMS.registerItem("stone_spatula",
@@ -205,6 +208,8 @@ public class ModItems {
 
     public static final DeferredItem<Item> SAPPHIRE_BLOCK = ITEMS.registerItem("sapphire_block",
             properties -> new BlockItem(ModBlocks.SAPPHIRE_BLOCK.get(), properties.useBlockDescriptionPrefix()));
+    public static final DeferredItem<Item> SAPHIRA_EGG = ITEMS.registerItem("saphira_egg",
+            properties -> new BlockItem(ModBlocks.SAPHIRA_EGG.get(), properties.useBlockDescriptionPrefix().rarity(Rarity.EPIC)));
 
     public static final DeferredItem<Item> GREEN_SCREEN_BLOCK = ITEMS.registerItem("green_screen_block",
             properties -> new BlockItem(ModBlocks.GREEN_SCREEN_BLOCK.get(), properties.useBlockDescriptionPrefix()));

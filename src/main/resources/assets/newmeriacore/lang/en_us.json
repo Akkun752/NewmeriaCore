@@ -31,16 +31,19 @@
   "block.newmeriacore.sapphire_ore": "Sapphire Ore",
   "block.newmeriacore.deepslate_sapphire_ore": "Deepslate Sapphire Ore",
   "block.newmeriacore.sapphire_block": "Block of Sapphire",
+  "block.newmeriacore.saphira_egg": "Saphira Egg",
   "block.newmeriacore.green_screen_block": "Green Screen Block",
   "item.newmeriacore.obsidian_stick": "Obsidian Stick",
   "item.newmeriacore.sapphire_sword": "Sapphire Sword",
   "item.newmeriacore.snow_walker_spawn_egg": "Snow Walker Spawn Egg",
   "item.newmeriacore.hell_zombie_spawn_egg": "Hell Zombie Spawn Egg",
   "item.newmeriacore.duck_spawn_egg": "Duck Spawn Egg",
+  "item.newmeriacore.saphira_spawn_egg": "Saphira Spawn Egg",
 
   "entity.newmeriacore.snow_walker": "Snow Walker",
   "entity.newmeriacore.hell_zombie": "Hell Zombie",
   "entity.newmeriacore.duck": "Duck",
+  "entity.newmeriacore.saphira": "Saphira",
 
   "biome.newmeriacore.black_desert": "Black Desert",
 

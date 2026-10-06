@@ -59,6 +59,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SNOW_WALKER_SPAWN_EGG);
                         output.accept(ModItems.HELL_ZOMBIE_SPAWN_EGG);
                         output.accept(ModItems.DUCK_SPAWN_EGG);
+                        output.accept(ModItems.SAPHIRA_SPAWN_EGG);
+                        output.accept(ModItems.SAPHIRA_EGG);
 
                         output.accept(ModItems.WOODEN_SPATULA);
                         output.accept(ModItems.STONE_SPATULA);

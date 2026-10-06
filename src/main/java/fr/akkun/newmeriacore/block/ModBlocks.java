@@ -2,6 +2,7 @@ package fr.akkun.newmeriacore.block;
 
 import fr.akkun.newmeriacore.NewmeriaCore;
 import fr.akkun.newmeriacore.block.custom.RiceCropBlock;
+import fr.akkun.newmeriacore.block.custom.SaphiraEggBlock;
 import fr.akkun.newmeriacore.block.custom.ChiliCropBlock;
 import fr.akkun.newmeriacore.block.custom.OilCauldronBlock;
 import fr.akkun.newmeriacore.block.custom.OnionCropBlock;
@@ -108,6 +109,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SAPPHIRE_BLOCK = BLOCKS.registerBlock("sapphire_block",
             properties -> new Block(properties.mapColor(MapColor.DIAMOND)
                     .instrument(NoteBlockInstrument.BIT).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
+
+    // Same values as the vanilla Dragon Egg.
+    public static final DeferredBlock<Block> SAPHIRA_EGG = BLOCKS.registerBlock("saphira_egg",
+            properties -> new SaphiraEggBlock(properties.mapColor(MapColor.COLOR_BLUE).strength(3.0F, 9.0F)
+                    .lightLevel(state -> 1).noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     // ---- Black sand family (same values as vanilla sand/sandstone family) ----
 

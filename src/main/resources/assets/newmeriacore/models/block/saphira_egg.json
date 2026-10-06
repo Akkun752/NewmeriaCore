@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/dragon_egg",
+  "textures": {
+    "particle": "newmeriacore:block/saphira_egg",
+    "all": "newmeriacore:block/saphira_egg"
+  }
+}

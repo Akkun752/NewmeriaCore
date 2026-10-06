@@ -31,16 +31,19 @@
   "block.newmeriacore.sapphire_ore": "Minerai de saphir",
   "block.newmeriacore.deepslate_sapphire_ore": "Minerai de saphir des abîmes",
   "block.newmeriacore.sapphire_block": "Bloc de saphir",
+  "block.newmeriacore.saphira_egg": "Œuf de Saphira",
   "block.newmeriacore.green_screen_block": "Bloc de fond vert",
   "item.newmeriacore.obsidian_stick": "Bâton d'obsidienne",
   "item.newmeriacore.sapphire_sword": "Épée en saphir",
   "item.newmeriacore.snow_walker_spawn_egg": "Œuf d'invocation de marcheur de neige",
   "item.newmeriacore.hell_zombie_spawn_egg": "Œuf d'invocation de zombie des Enfers",
   "item.newmeriacore.duck_spawn_egg": "Œuf d'invocation de canard",
+  "item.newmeriacore.saphira_spawn_egg": "Œuf d'invocation de Saphira",
 
   "entity.newmeriacore.snow_walker": "Marcheur de neige",
   "entity.newmeriacore.hell_zombie": "Zombie des Enfers",
   "entity.newmeriacore.duck": "Canard",
+  "entity.newmeriacore.saphira": "Saphira",
 
   "biome.newmeriacore.black_desert": "Désert noir",
 

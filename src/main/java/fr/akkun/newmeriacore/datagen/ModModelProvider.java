@@ -9,6 +9,7 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
@@ -53,6 +54,7 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.SNOW_WALKER_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.HELL_ZOMBIE_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.DUCK_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SAPHIRA_SPAWN_EGG.get(), ModelTemplates.FLAT_ITEM);
 
         itemModels.generateFlatItem(ModItems.WOODEN_SPATULA.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.STONE_SPATULA.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -128,6 +130,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_BLOCK.get());
+        // Hand-written model (models/block/saphira_egg.json): the vanilla dragon egg shape with our texture.
+        blockModels.createNonTemplateModelBlock(ModBlocks.SAPHIRA_EGG.get());
+        blockModels.registerSimpleItemModel(ModBlocks.SAPHIRA_EGG.get(), ModelLocationUtils.getModelLocation(ModBlocks.SAPHIRA_EGG.get()));
         blockModels.createTrivialCube(ModBlocks.GREEN_SCREEN_BLOCK.get());
 
         blockModels.createTrivialCube(ModBlocks.BLACK_SAND.get());

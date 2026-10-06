@@ -110,6 +110,17 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(ModItems.RAW_SAUSAGE.get()), has(ModItems.RAW_SAUSAGE.get()))
                 .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(ModItems.SAUSAGE.get()) + "_from_campfire_cooking");
 
+        // The Dragon Egg is consumed: a Saphira Egg costs the one-of-a-kind reward of the Ender Dragon.
+        shaped(RecipeCategory.MISC, ModBlocks.SAPHIRA_EGG.get())
+                .pattern("SBS")
+                .pattern("BEB")
+                .pattern("SBS")
+                .define('S', ModItems.SAPPHIRE.get())
+                .define('B', ModBlocks.SAPPHIRE_BLOCK.get())
+                .define('E', Blocks.DRAGON_EGG)
+                .unlockedBy(getHasName(Blocks.DRAGON_EGG), has(Blocks.DRAGON_EGG))
+                .save(output);
+
         shaped(RecipeCategory.MISC, ModItems.OBSIDIAN_STICK.get(), 4)
                 .pattern("#")
                 .pattern("#")

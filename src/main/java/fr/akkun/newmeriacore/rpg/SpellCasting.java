@@ -12,6 +12,7 @@ import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.animal.equine.AbstractHorse;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -20,6 +21,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.jspecify.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,13 +84,18 @@ public class SpellCasting {
         // Player.pick() only ray-traces blocks; use the entity-aware variant so an entity in the
         // crosshair gets struck directly instead of the ground behind/beyond it.
         HitResult hit = ProjectileUtil.getHitResultOnViewVector(player, EntitySelector.CAN_BE_PICKED, 100.0);
-        Vec3 target = hit.getLocation();
+        strikeLightning(level, hit.getLocation(), player);
+    }
+
+    /** The Lightning spell's bolt (vanilla lightning with its damage tripled), anywhere - also what
+     *  the Saphira boss throws. {@code cause} is the casting player, if any. */
+    public static void strikeLightning(ServerLevel level, Vec3 target, @Nullable ServerPlayer cause) {
         LightningBolt bolt = EntityTypes.LIGHTNING_BOLT.create(level, EntitySpawnReason.TRIGGERED);
         if (bolt == null) {
             return;
         }
         bolt.setPos(target.x, target.y, target.z);
-        bolt.setCause(player);
+        bolt.setCause(cause);
         bolt.setDamage(bolt.getDamage() * POWER_MULTIPLIER);
         level.addFreshEntity(bolt);
     }
@@ -129,12 +136,17 @@ public class SpellCasting {
 
     private static void castFireball(ServerPlayer player) {
         ServerLevel level = player.level();
-        Vec3 direction = player.getLookAngle();
+        launchFireball(level, player, new Vec3(player.getX(), player.getEyeY(), player.getZ()), player.getLookAngle());
+    }
+
+    /** The Fireball spell's projectile (a ghast fireball with tripled blast and damage), launched
+     *  from anywhere - also what the Saphira boss rains down. */
+    public static void launchFireball(ServerLevel level, LivingEntity owner, Vec3 from, Vec3 direction) {
         // Vanilla ghast fireballs: explosion power 1, 6.0F direct-hit damage.
         int explosionPower = Math.round(1 * POWER_MULTIPLIER);
         float directHitDamage = 6.0F * POWER_MULTIPLIER;
-        RpgLargeFireball fireball = new RpgLargeFireball(level, player, direction, explosionPower, directHitDamage);
-        fireball.setPos(player.getX(), player.getEyeY(), player.getZ());
+        RpgLargeFireball fireball = new RpgLargeFireball(level, owner, direction, explosionPower, directHitDamage);
+        fireball.setPos(from.x, from.y, from.z);
         level.addFreshEntity(fireball);
     }
 
