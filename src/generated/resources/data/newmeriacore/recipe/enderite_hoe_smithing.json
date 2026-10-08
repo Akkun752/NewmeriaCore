@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#newmeriacore:enderite_tool_materials",
+  "base": "minecraft:netherite_hoe",
+  "result": {
+    "id": "newmeriacore:enderite_hoe"
+  },
+  "template": "newmeriacore:enderite_upgrade_smithing_template"
+}

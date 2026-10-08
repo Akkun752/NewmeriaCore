@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#newmeriacore:enderite_tool_materials",
+  "base": "newmeriacore:netherite_hammer",
+  "result": {
+    "id": "newmeriacore:enderite_hammer"
+  },
+  "template": "newmeriacore:enderite_upgrade_smithing_template"
+}

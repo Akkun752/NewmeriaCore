@@ -1,0 +1,58 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.05
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "newmeriacore:enderite_upgrade_smithing_template"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.04
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "newmeriacore:ender_ancient_debris"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.03
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "newmeriacore:enderite_scrap"
+        }
+      ],
+      "rolls": 1
+    },
+    {
+      "condition": {
+        "type": "minecraft:random_chance",
+        "chance": 0.005
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "newmeriacore:enderite_ingot"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "newmeriacore:chests/end_city_enderite"
+}

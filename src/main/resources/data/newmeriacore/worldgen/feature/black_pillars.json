@@ -1,0 +1,12 @@
+{
+  "type": "newmeriacore:surface_template",
+  "sink": 1,
+  "structures": [
+    "newmeriacore:black_pillar_small",
+    "newmeriacore:black_pillar_small",
+    "newmeriacore:black_pillar_small",
+    "newmeriacore:black_pillar_medium",
+    "newmeriacore:black_pillar_medium",
+    "newmeriacore:black_pillar_big"
+  ]
+}

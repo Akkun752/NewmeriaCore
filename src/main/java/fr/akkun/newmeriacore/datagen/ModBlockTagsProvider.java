@@ -55,6 +55,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addAll(BlockTags.TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS, ModBlocks.BLACK_SAND.get());
         addAll(BlockTags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS, ModBlocks.BLACK_SAND.get());
 
+        addAll(BlockTags.MINEABLE_WITH_PICKAXE, ModBlocks.ENDER_ANCIENT_DEBRIS.get(), ModBlocks.ENDERITE_BLOCK.get());
+        addAll(BlockTags.NEEDS_DIAMOND_TOOL, ModBlocks.ENDER_ANCIENT_DEBRIS.get(), ModBlocks.ENDERITE_BLOCK.get());
+        addAll(BlockTags.BEACON_BASE_BLOCKS, ModBlocks.ENDERITE_BLOCK.get());
+        // The Ender Dragon flies through End Stone without breaking it; same for the debris inside.
+        addAll(BlockTags.DRAGON_IMMUNE, ModBlocks.ENDER_ANCIENT_DEBRIS.get());
+
         addAll(BlockTags.MINEABLE_WITH_PICKAXE, ModBlocks.IRON_CHEST.get(), ModBlocks.GOLDEN_CHEST.get(), ModBlocks.DIAMOND_CHEST.get());
         addAll(BlockTags.NEEDS_IRON_TOOL, ModBlocks.IRON_CHEST.get(), ModBlocks.GOLDEN_CHEST.get(), ModBlocks.DIAMOND_CHEST.get());
 

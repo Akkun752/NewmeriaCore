@@ -1,5 +1,9 @@
 package fr.akkun.newmeriacore.datagen;
 
+import fr.akkun.newmeriacore.item.ModToolTiers;
+import net.minecraft.world.item.Item;
+import java.util.Map;
+import java.util.LinkedHashMap;
 import fr.akkun.newmeriacore.NewmeriaCore;
 import fr.akkun.newmeriacore.block.ModBlocks;
 import fr.akkun.newmeriacore.item.ModItems;
@@ -543,6 +547,57 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('C', ModBlocks.GOLDEN_CHEST.get())
                 .unlockedBy(getHasName(ModBlocks.GOLDEN_CHEST.get()), has(ModBlocks.GOLDEN_CHEST.get()))
                 .save(output);
+
+        // ---- Enderite, built like vanilla netherite ----
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.ENDER_ANCIENT_DEBRIS.get()), RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ENDERITE_SCRAP.get(), 2.0F, 200)
+                .unlockedBy(getHasName(ModBlocks.ENDER_ANCIENT_DEBRIS.get()), has(ModBlocks.ENDER_ANCIENT_DEBRIS.get()))
+                .save(output);
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModBlocks.ENDER_ANCIENT_DEBRIS.get()), RecipeCategory.MISC, CookingBookCategory.MISC, ModItems.ENDERITE_SCRAP.get(), 2.0F, 100)
+                .unlockedBy(getHasName(ModBlocks.ENDER_ANCIENT_DEBRIS.get()), has(ModBlocks.ENDER_ANCIENT_DEBRIS.get()))
+                .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(ModItems.ENDERITE_SCRAP.get()) + "_from_blasting");
+
+        shapeless(RecipeCategory.MISC, ModItems.ENDERITE_INGOT.get())
+                .requires(ModItems.ENDERITE_SCRAP, 4)
+                .requires(Items.GOLD_INGOT, 4)
+                .unlockedBy(getHasName(ModItems.ENDERITE_SCRAP.get()), has(ModItems.ENDERITE_SCRAP))
+                .save(output);
+        shapeless(RecipeCategory.MISC, ModItems.ENDERITE_INGOT.get(), 9)
+                .requires(ModBlocks.ENDERITE_BLOCK.get())
+                .unlockedBy(getHasName(ModBlocks.ENDERITE_BLOCK.get()), has(ModBlocks.ENDERITE_BLOCK.get()))
+                .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(ModItems.ENDERITE_INGOT.get()) + "_from_enderite_block");
+        shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ENDERITE_BLOCK.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.ENDERITE_INGOT.get())
+                .unlockedBy(getHasName(ModItems.ENDERITE_INGOT.get()), has(ModItems.ENDERITE_INGOT))
+                .save(output);
+
+        // Duplicated like the vanilla Netherite Upgrade, with End Stone in place of Netherrack.
+        copySmithingTemplate(ModItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get(), Blocks.END_STONE);
+
+        // Every enderite piece is its netherite counterpart upgraded on a smithing table.
+        Map<Item, Item> enderiteUpgrades = new LinkedHashMap<>();
+        enderiteUpgrades.put(Items.NETHERITE_SWORD, ModItems.ENDERITE_SWORD.get());
+        enderiteUpgrades.put(ModItems.NETHERITE_SPATULA.get(), ModItems.ENDERITE_SPATULA.get());
+        enderiteUpgrades.put(Items.NETHERITE_SPEAR, ModItems.ENDERITE_SPEAR.get());
+        enderiteUpgrades.put(Items.NETHERITE_PICKAXE, ModItems.ENDERITE_PICKAXE.get());
+        enderiteUpgrades.put(Items.NETHERITE_AXE, ModItems.ENDERITE_AXE.get());
+        enderiteUpgrades.put(Items.NETHERITE_SHOVEL, ModItems.ENDERITE_SHOVEL.get());
+        enderiteUpgrades.put(Items.NETHERITE_HOE, ModItems.ENDERITE_HOE.get());
+        enderiteUpgrades.put(ModItems.NETHERITE_HAMMER.get(), ModItems.ENDERITE_HAMMER.get());
+        enderiteUpgrades.put(ModItems.NETHERITE_WAND.get(), ModItems.ENDERITE_WAND.get());
+        enderiteUpgrades.put(Items.NETHERITE_HELMET, ModItems.ENDERITE_HELMET.get());
+        enderiteUpgrades.put(Items.NETHERITE_CHESTPLATE, ModItems.ENDERITE_CHESTPLATE.get());
+        enderiteUpgrades.put(Items.NETHERITE_LEGGINGS, ModItems.ENDERITE_LEGGINGS.get());
+        enderiteUpgrades.put(Items.NETHERITE_BOOTS, ModItems.ENDERITE_BOOTS.get());
+        enderiteUpgrades.put(Items.NETHERITE_HORSE_ARMOR, ModItems.ENDERITE_HORSE_ARMOR.get());
+        enderiteUpgrades.put(Items.NETHERITE_NAUTILUS_ARMOR, ModItems.ENDERITE_NAUTILUS_ARMOR.get());
+        enderiteUpgrades.forEach((netherite, enderite) -> SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(ModItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(netherite),
+                        tag(ModToolTiers.ENDERITE_TOOL_MATERIALS), RecipeCategory.COMBAT, enderite)
+                .unlocks("has_enderite_ingot", has(ModToolTiers.ENDERITE_TOOL_MATERIALS))
+                .save(output, NewmeriaCore.MOD_ID + ":" + getItemName(enderite) + "_smithing"));
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_SCREEN_BLOCK.get())
                 .pattern("###")

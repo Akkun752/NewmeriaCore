@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#newmeriacore:enderite_tool_materials",
+  "base": "newmeriacore:netherite_spatula",
+  "result": {
+    "id": "newmeriacore:enderite_spatula"
+  },
+  "template": "newmeriacore:enderite_upgrade_smithing_template"
+}

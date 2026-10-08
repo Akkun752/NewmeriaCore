@@ -1,0 +1,29 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "newmeriacore:enderite"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "newmeriacore:enderite"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "newmeriacore:enderite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "newmeriacore:enderite"
+      }
+    ],
+    "nautilus_body": [
+      {
+        "texture": "newmeriacore:enderite"
+      }
+    ]
+  }
+}

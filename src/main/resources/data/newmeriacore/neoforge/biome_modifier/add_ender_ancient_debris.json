@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_end",
+  "features": [
+    "newmeriacore:ore_ender_ancient_debris_large",
+    "newmeriacore:ore_ender_ancient_debris_small"
+  ],
+  "step": "underground_ores"
+}

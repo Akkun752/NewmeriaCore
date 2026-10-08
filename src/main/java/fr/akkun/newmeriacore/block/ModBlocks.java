@@ -113,6 +113,15 @@ public class ModBlocks {
             properties -> new Block(properties.mapColor(MapColor.DIAMOND)
                     .instrument(NoteBlockInstrument.BIT).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL)));
 
+    // Same values as vanilla's Ancient Debris and Block of Netherite.
+    public static final DeferredBlock<Block> ENDER_ANCIENT_DEBRIS = BLOCKS.registerBlock("ender_ancient_debris",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_PURPLE)
+                    .requiresCorrectToolForDrops().strength(30.0F, 1200.0F).sound(SoundType.ANCIENT_DEBRIS)));
+
+    public static final DeferredBlock<Block> ENDERITE_BLOCK = BLOCKS.registerBlock("enderite_block",
+            properties -> new Block(properties.mapColor(MapColor.COLOR_PURPLE)
+                    .requiresCorrectToolForDrops().strength(50.0F, 1200.0F).sound(SoundType.NETHERITE_BLOCK)));
+
     // Same values as the vanilla Dragon Egg.
     public static final DeferredBlock<Block> SAPHIRA_EGG = BLOCKS.registerBlock("saphira_egg",
             properties -> new SaphiraEggBlock(properties.mapColor(MapColor.COLOR_BLUE).strength(3.0F, 9.0F)

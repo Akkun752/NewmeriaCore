@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "newmeriacore:enderite_scrap",
+    "newmeriacore:enderite_scrap",
+    "newmeriacore:enderite_scrap",
+    "newmeriacore:enderite_scrap",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot"
+  ],
+  "result": {
+    "id": "newmeriacore:enderite_ingot"
+  }
+}

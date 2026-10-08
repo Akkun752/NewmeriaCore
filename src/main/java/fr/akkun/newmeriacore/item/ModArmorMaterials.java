@@ -24,6 +24,15 @@ public class ModArmorMaterials {
             33, makeDefense(3, 6, 8, 3, 19), 15, SoundEvents.ARMOR_EQUIP_NETHERITE,
             3.0F, 0.1F, ModToolTiers.SAPPHIRE_TOOL_MATERIALS, SAPPHIRE_ASSET_ID);
 
+    public static final ResourceKey<EquipmentAsset> ENDERITE_ASSET_ID =
+            ResourceKey.create(ROOT_ID, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "enderite"));
+
+    // Twice netherite's durability (37). Armor points are netherite's (already the most a full set
+    // can usefully give); toughness and knockback resistance each go one step further (3.0F, 0.1F).
+    public static final ArmorMaterial ENDERITE = new ArmorMaterial(
+            74, makeDefense(3, 6, 8, 3, 19), 15, SoundEvents.ARMOR_EQUIP_NETHERITE,
+            4.0F, 0.2F, ModToolTiers.ENDERITE_TOOL_MATERIALS, ENDERITE_ASSET_ID);
+
     private static Map<ArmorType, Integer> makeDefense(int boots, int legs, int chest, int helm, int body) {
         return Maps.newEnumMap(
                 Map.of(ArmorType.BOOTS, boots, ArmorType.LEGGINGS, legs, ArmorType.CHESTPLATE, chest, ArmorType.HELMET, helm, ArmorType.BODY, body)

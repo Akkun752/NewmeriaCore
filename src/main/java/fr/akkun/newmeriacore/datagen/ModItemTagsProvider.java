@@ -52,5 +52,20 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 ModItems.getRK(ModItems.COPPER_WAND.get()), ModItems.getRK(ModItems.IRON_WAND.get()),
                 ModItems.getRK(ModItems.GOLDEN_WAND.get()), ModItems.getRK(ModItems.DIAMOND_WAND.get()),
                 ModItems.getRK(ModItems.NETHERITE_WAND.get()), ModItems.getRK(ModItems.SAPPHIRE_WAND.get()));
+
+        tag(ModToolTiers.ENDERITE_TOOL_MATERIALS).add(ModItems.getRK(ModItems.ENDERITE_INGOT.get()));
+        tag(ItemTags.BEACON_PAYMENT_ITEMS).add(ModItems.getRK(ModItems.ENDERITE_INGOT.get()));
+        // What decides which enchantments each piece can take, like its netherite counterpart.
+        tag(ItemTags.SWORDS).add(ModItems.getRK(ModItems.ENDERITE_SWORD.get()), ModItems.getRK(ModItems.ENDERITE_SPATULA.get()));
+        tag(ItemTags.SPEARS).add(ModItems.getRK(ModItems.ENDERITE_SPEAR.get()));
+        tag(ItemTags.PICKAXES).add(ModItems.getRK(ModItems.ENDERITE_PICKAXE.get()), ModItems.getRK(ModItems.ENDERITE_HAMMER.get()));
+        tag(ItemTags.AXES).add(ModItems.getRK(ModItems.ENDERITE_AXE.get()));
+        tag(ItemTags.SHOVELS).add(ModItems.getRK(ModItems.ENDERITE_SHOVEL.get()));
+        tag(ItemTags.HOES).add(ModItems.getRK(ModItems.ENDERITE_HOE.get()));
+        tag(ItemTags.DURABILITY_ENCHANTABLE).add(ModItems.getRK(ModItems.ENDERITE_WAND.get()));
+        tag(ItemTags.HEAD_ARMOR).add(ModItems.getRK(ModItems.ENDERITE_HELMET.get()));
+        tag(ItemTags.CHEST_ARMOR).add(ModItems.getRK(ModItems.ENDERITE_CHESTPLATE.get()));
+        tag(ItemTags.LEG_ARMOR).add(ModItems.getRK(ModItems.ENDERITE_LEGGINGS.get()));
+        tag(ItemTags.FOOT_ARMOR).add(ModItems.getRK(ModItems.ENDERITE_BOOTS.get()));
     }
 }

@@ -244,6 +244,53 @@ public class ModItems {
     public static final DeferredItem<Item> DIAMOND_CHEST = ITEMS.registerItem("diamond_chest",
             properties -> new BlockItem(ModBlocks.DIAMOND_CHEST.get(), properties.useBlockDescriptionPrefix()));
 
+    // ---- Enderite: the tier above netherite. Everything is fire resistant, like netherite. ----
+    public static final DeferredItem<Item> ENDER_ANCIENT_DEBRIS = ITEMS.registerItem("ender_ancient_debris",
+            properties -> new BlockItem(ModBlocks.ENDER_ANCIENT_DEBRIS.get(), properties.useBlockDescriptionPrefix().fireResistant()));
+    public static final DeferredItem<Item> ENDERITE_BLOCK = ITEMS.registerItem("enderite_block",
+            properties -> new BlockItem(ModBlocks.ENDERITE_BLOCK.get(), properties.useBlockDescriptionPrefix().fireResistant()));
+    public static final DeferredItem<Item> ENDERITE_SCRAP = ITEMS.registerItem("enderite_scrap",
+            properties -> new Item(properties.fireResistant()));
+    public static final DeferredItem<Item> ENDERITE_INGOT = ITEMS.registerItem("enderite_ingot",
+            properties -> new Item(properties.fireResistant()));
+    public static final DeferredItem<Item> ENDERITE_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("enderite_upgrade_smithing_template",
+            properties -> ModSmithingTemplates.createEnderiteUpgradeTemplate(properties.rarity(Rarity.RARE)));
+
+    public static final DeferredItem<Item> ENDERITE_SWORD = ITEMS.registerItem("enderite_sword",
+            properties -> new Item(properties.fireResistant().sword(ModToolTiers.ENDERITE, 3.0F, -2.4F)));
+    public static final DeferredItem<Item> ENDERITE_SPATULA = ITEMS.registerItem("enderite_spatula",
+            properties -> new SpatulaItem(properties.fireResistant().sword(ModToolTiers.halfDurability(ModToolTiers.ENDERITE), 3.0F, -2.4F)));
+    // Same combat/kinetic-charge parameters as the vanilla netherite spear, on the enderite material.
+    public static final DeferredItem<Item> ENDERITE_SPEAR = ITEMS.registerItem("enderite_spear",
+            properties -> new Item(properties.fireResistant().spear(ModToolTiers.ENDERITE,
+                    1.15F, 1.2F, 0.4F, 2.5F, 9.0F, 5.5F, 5.1F, 8.75F, 4.6F)));
+    public static final DeferredItem<Item> ENDERITE_PICKAXE = ITEMS.registerItem("enderite_pickaxe",
+            properties -> new Item(properties.fireResistant().pickaxe(ModToolTiers.ENDERITE, 1.0F, -2.8F)));
+    public static final DeferredItem<Item> ENDERITE_AXE = ITEMS.registerItem("enderite_axe",
+            properties -> new Item(properties.fireResistant().axe(ModToolTiers.ENDERITE, 5.0F, -3.0F)));
+    public static final DeferredItem<Item> ENDERITE_SHOVEL = ITEMS.registerItem("enderite_shovel",
+            properties -> new Item(properties.fireResistant().shovel(ModToolTiers.ENDERITE, 1.5F, -3.0F)));
+    // Like every vanilla hoe, cancels out the material's attack damage bonus.
+    public static final DeferredItem<Item> ENDERITE_HOE = ITEMS.registerItem("enderite_hoe",
+            properties -> new Item(properties.fireResistant().hoe(ModToolTiers.ENDERITE, -5.0F, 0.0F)));
+    public static final DeferredItem<Item> ENDERITE_HAMMER = ITEMS.registerItem("enderite_hammer",
+            properties -> new HammerItem(properties.fireResistant().pickaxe(ModToolTiers.ENDERITE, 1.0F, -2.8F)));
+    public static final DeferredItem<Item> ENDERITE_WAND = ITEMS.registerItem("enderite_wand",
+            properties -> new WandItem(properties.fireResistant().durability(ModToolTiers.ENDERITE.durability()).enchantable(ModToolTiers.ENDERITE.enchantmentValue())));
+
+    public static final DeferredItem<Item> ENDERITE_HELMET = ITEMS.registerItem("enderite_helmet",
+            properties -> new Item(properties.fireResistant().humanoidArmor(ModArmorMaterials.ENDERITE, ArmorType.HELMET)));
+    public static final DeferredItem<Item> ENDERITE_CHESTPLATE = ITEMS.registerItem("enderite_chestplate",
+            properties -> new Item(properties.fireResistant().humanoidArmor(ModArmorMaterials.ENDERITE, ArmorType.CHESTPLATE)));
+    public static final DeferredItem<Item> ENDERITE_LEGGINGS = ITEMS.registerItem("enderite_leggings",
+            properties -> new Item(properties.fireResistant().humanoidArmor(ModArmorMaterials.ENDERITE, ArmorType.LEGGINGS)));
+    public static final DeferredItem<Item> ENDERITE_BOOTS = ITEMS.registerItem("enderite_boots",
+            properties -> new Item(properties.fireResistant().humanoidArmor(ModArmorMaterials.ENDERITE, ArmorType.BOOTS)));
+    public static final DeferredItem<Item> ENDERITE_HORSE_ARMOR = ITEMS.registerItem("enderite_horse_armor",
+            properties -> new Item(properties.fireResistant().horseArmor(ModArmorMaterials.ENDERITE)));
+    public static final DeferredItem<Item> ENDERITE_NAUTILUS_ARMOR = ITEMS.registerItem("enderite_nautilus_armor",
+            properties -> new Item(properties.fireResistant().nautilusArmor(ModArmorMaterials.ENDERITE)));
+
     public static final DeferredItem<Item> GREEN_SCREEN_BLOCK = ITEMS.registerItem("green_screen_block",
             properties -> new BlockItem(ModBlocks.GREEN_SCREEN_BLOCK.get(), properties.useBlockDescriptionPrefix()));
 

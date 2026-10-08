@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "condition": {
+        "type": "minecraft:survives_explosion"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "newmeriacore:ender_ancient_debris"
+        }
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "newmeriacore:blocks/ender_ancient_debris"
+}

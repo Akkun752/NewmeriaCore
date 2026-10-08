@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#newmeriacore:enderite_tool_materials",
+  "base": "minecraft:netherite_boots",
+  "result": {
+    "id": "newmeriacore:enderite_boots"
+  },
+  "template": "newmeriacore:enderite_upgrade_smithing_template"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#newmeriacore:enderite_tool_materials",
+  "base": "newmeriacore:netherite_wand",
+  "result": {
+    "id": "newmeriacore:enderite_wand"
+  },
+  "template": "newmeriacore:enderite_upgrade_smithing_template"
+}

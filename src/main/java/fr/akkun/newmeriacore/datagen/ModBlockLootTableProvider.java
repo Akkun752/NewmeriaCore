@@ -49,6 +49,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), createOreDrop(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
         dropSelf(ModBlocks.SAPPHIRE_BLOCK.get());
         dropSelf(ModBlocks.SAPHIRA_EGG.get());
+        dropSelf(ModBlocks.ENDER_ANCIENT_DEBRIS.get());
+        dropSelf(ModBlocks.ENDERITE_BLOCK.get());
         // Like the vanilla chest: the dropped item keeps the name given on an anvil.
         add(ModBlocks.IRON_CHEST.get(), this::createNameableBlockEntityTable);
         add(ModBlocks.GOLDEN_CHEST.get(), this::createNameableBlockEntityTable);

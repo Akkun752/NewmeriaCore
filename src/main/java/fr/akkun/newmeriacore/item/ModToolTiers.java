@@ -21,6 +21,15 @@ public class ModToolTiers {
     public static final ToolMaterial SAPPHIRE = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 1561, 9.0F, 4.0F, 15, SAPPHIRE_TOOL_MATERIALS);
 
+    /** What repairs enderite tools and armor on an anvil. */
+    public static final TagKey<Item> ENDERITE_TOOL_MATERIALS =
+            TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "enderite_tool_materials"));
+
+    // To netherite what netherite is to diamond: twice its durability (2031), 1.5 times its mining
+    // speed (9.0F) and one more point of attack damage (4.0F). Same mining level and enchantability.
+    public static final ToolMaterial ENDERITE = new ToolMaterial(
+            BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 4062, 13.5F, 5.0F, 15, ENDERITE_TOOL_MATERIALS);
+
     /** Tools that count as "made of Hell material" for gameplay checks (e.g. what the Snow Walker is weak to). */
     public static final TagKey<Item> HELL_TOOLS =
             TagKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "hell_tools"));

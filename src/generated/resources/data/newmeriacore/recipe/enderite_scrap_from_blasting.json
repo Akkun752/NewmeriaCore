@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 2.0,
+  "ingredient": "newmeriacore:ender_ancient_debris",
+  "result": {
+    "id": "newmeriacore:enderite_scrap"
+  }
+}

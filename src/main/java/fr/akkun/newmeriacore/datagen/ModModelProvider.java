@@ -106,6 +106,25 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.SAPPHIRE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAPPHIRE_NAUTILUS_ARMOR.get(), ModelTemplates.FLAT_ITEM);
 
+        itemModels.generateFlatItem(ModItems.ENDERITE_SCRAP.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_HELMET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_HORSE_ARMOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_NAUTILUS_ARMOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_SPATULA.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ENDERITE_WAND.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateSpear(ModItems.ENDERITE_SPEAR.get());
+
         itemModels.generateFlatItem(ModItems.OIL_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         // Fluid blocks render entirely through the FluidModel/RegisterFluidModelsEvent system, not the
         // normal blockstate pipeline - but datagen still validates that every registered block has SOME
@@ -137,6 +156,8 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get());
         blockModels.createTrivialCube(ModBlocks.SAPPHIRE_BLOCK.get());
+        blockModels.createTrivialBlock(ModBlocks.ENDER_ANCIENT_DEBRIS.get(), TexturedModel.COLUMN);
+        blockModels.createTrivialCube(ModBlocks.ENDERITE_BLOCK.get());
         // Hand-written model (models/block/saphira_egg.json): the vanilla dragon egg shape with our texture.
         blockModels.createNonTemplateModelBlock(ModBlocks.SAPHIRA_EGG.get());
         blockModels.registerSimpleItemModel(ModBlocks.SAPHIRA_EGG.get(), ModelLocationUtils.getModelLocation(ModBlocks.SAPHIRA_EGG.get()));

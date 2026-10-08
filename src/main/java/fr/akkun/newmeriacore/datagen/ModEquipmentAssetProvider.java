@@ -31,6 +31,13 @@ public class ModEquipmentAssetProvider implements DataProvider {
                 .addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, new EquipmentClientInfo.Layer(sapphireTexture))
                 .addLayers(EquipmentClientInfo.LayerType.NAUTILUS_BODY, new EquipmentClientInfo.Layer(sapphireTexture))
                 .build());
+
+        Identifier enderiteTexture = Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "enderite");
+        output.accept(ModArmorMaterials.ENDERITE_ASSET_ID, EquipmentClientInfo.builder()
+                .addHumanoidLayers(enderiteTexture)
+                .addLayers(EquipmentClientInfo.LayerType.HORSE_BODY, new EquipmentClientInfo.Layer(enderiteTexture))
+                .addLayers(EquipmentClientInfo.LayerType.NAUTILUS_BODY, new EquipmentClientInfo.Layer(enderiteTexture))
+                .build());
     }
 
     @Override
