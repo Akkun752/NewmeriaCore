@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "newmeriacore:item/golden_chest",
+    "model": {
+      "type": "minecraft:chest",
+      "texture": "newmeriacore:gold"
+    }
+  }
+}

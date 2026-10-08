@@ -33,6 +33,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHILI_RICE);
                         output.accept(ModItems.CHILI_SEEDS);
                         output.accept(ModItems.SANDWICH);
+                        output.accept(ModItems.HAMBURGER);
+                        output.accept(ModItems.FRUIT_SALAD);
+                        output.accept(ModItems.SAUSAGE_ROUGAIL);
+                        output.accept(ModItems.HOT_DOG);
                         output.accept(ModItems.FRIED_BEEF);
                         output.accept(ModItems.FRIED_CHICKEN);
                         output.accept(ModItems.FRIED_COD);
@@ -56,6 +60,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.DEEPSLATE_SAPPHIRE_ORE);
                         output.accept(ModItems.SAPPHIRE_BLOCK);
                         output.accept(ModItems.GREEN_SCREEN_BLOCK);
+                        output.accept(ModItems.IRON_CHEST);
+                        output.accept(ModItems.GOLDEN_CHEST);
+                        output.accept(ModItems.DIAMOND_CHEST);
                         output.accept(ModItems.OBSIDIAN_STICK);
                         output.accept(ModItems.SAPPHIRE_SWORD);
                         output.accept(ModItems.SNOW_WALKER_SPAWN_EGG);

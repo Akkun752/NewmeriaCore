@@ -60,6 +60,37 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.PORKCHOP), has(Items.PORKCHOP))
                 .save(output);
 
+        shapeless(RecipeCategory.FOOD, ModItems.HAMBURGER.get())
+                .requires(Items.BREAD)
+                .requires(Items.COOKED_BEEF)
+                .requires(ModItems.TOMATO)
+                .requires(Items.KELP)
+                .unlockedBy(getHasName(ModItems.TOMATO.get()), has(ModItems.TOMATO))
+                .save(output);
+
+        shapeless(RecipeCategory.FOOD, ModItems.FRUIT_SALAD.get())
+                .requires(Items.BOWL)
+                .requires(Items.APPLE)
+                .requires(ModItems.PEER)
+                .requires(Items.MELON_SLICE)
+                .unlockedBy(getHasName(ModItems.PEER.get()), has(ModItems.PEER))
+                .save(output);
+
+        shapeless(RecipeCategory.FOOD, ModItems.SAUSAGE_ROUGAIL.get())
+                .requires(Items.BOWL)
+                .requires(ModItems.SAUSAGE)
+                .requires(ModItems.RICE)
+                .requires(ModItems.ONION)
+                .requires(ModItems.TOMATO)
+                .unlockedBy(getHasName(ModItems.SAUSAGE.get()), has(ModItems.SAUSAGE))
+                .save(output);
+
+        shapeless(RecipeCategory.FOOD, ModItems.HOT_DOG.get())
+                .requires(Items.BREAD)
+                .requires(ModItems.SAUSAGE)
+                .unlockedBy(getHasName(ModItems.SAUSAGE.get()), has(ModItems.SAUSAGE))
+                .save(output);
+
         // Raw Duck cooks like vanilla raw chicken: furnace, smoker and campfire. Saved explicitly
         // under our own namespace (the vanilla simpleCookingRecipe helper uses a bare name).
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.RAW_DUCK.get()), RecipeCategory.FOOD, CookingBookCategory.FOOD, ModItems.COOKED_DUCK.get(), 0.35F, 200)
@@ -485,6 +516,33 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(Blocks.MOSS_BLOCK)
                 .unlockedBy(getHasName(ModBlocks.MARBLE_BRICKS.get()), has(ModBlocks.MARBLE_BRICKS.get()))
                 .save(output, getConversionRecipeName(ModBlocks.MOSSY_MARBLE_BRICKS.get(), Blocks.MOSS_BLOCK));
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.IRON_CHEST.get())
+                .pattern("III")
+                .pattern("ICI")
+                .pattern("III")
+                .define('I', Items.IRON_INGOT)
+                .define('C', Items.CHEST)
+                .unlockedBy(getHasName(Items.CHEST), has(Items.CHEST))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.GOLDEN_CHEST.get())
+                .pattern("GGG")
+                .pattern("GCG")
+                .pattern("GGG")
+                .define('G', Items.GOLD_INGOT)
+                .define('C', ModBlocks.IRON_CHEST.get())
+                .unlockedBy(getHasName(ModBlocks.IRON_CHEST.get()), has(ModBlocks.IRON_CHEST.get()))
+                .save(output);
+
+        shaped(RecipeCategory.DECORATIONS, ModBlocks.DIAMOND_CHEST.get())
+                .pattern("DDD")
+                .pattern("DCD")
+                .pattern("DDD")
+                .define('D', Items.DIAMOND)
+                .define('C', ModBlocks.GOLDEN_CHEST.get())
+                .unlockedBy(getHasName(ModBlocks.GOLDEN_CHEST.get()), has(ModBlocks.GOLDEN_CHEST.get()))
+                .save(output);
 
         shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GREEN_SCREEN_BLOCK.get())
                 .pattern("###")

@@ -1,6 +1,9 @@
 package fr.akkun.newmeriacore.block;
 
 import fr.akkun.newmeriacore.NewmeriaCore;
+import fr.akkun.newmeriacore.block.custom.ChestTier;
+import fr.akkun.newmeriacore.block.custom.IronChestBlock;
+import fr.akkun.newmeriacore.block.custom.LargeChestBlock;
 import fr.akkun.newmeriacore.block.custom.RiceCropBlock;
 import fr.akkun.newmeriacore.block.custom.SaphiraEggBlock;
 import fr.akkun.newmeriacore.block.custom.ChiliCropBlock;
@@ -263,6 +266,20 @@ public class ModBlocks {
     public static final DeferredBlock<OilCauldronBlock> OIL_CAULDRON = BLOCKS.registerBlock("oil_cauldron",
             properties -> new OilCauldronBlock(properties.mapColor(MapColor.METAL).strength(2.0F)
                     .requiresCorrectToolForDrops().sound(SoundType.METAL).noOcclusion().noLootTable()));
+
+    // Mined with a pickaxe (iron or better, see the block tags) and a little softer than the vanilla
+    // chest (2.5F); as blast-resistant as an iron block.
+    public static final DeferredBlock<IronChestBlock> IRON_CHEST = BLOCKS.registerBlock("iron_chest",
+            properties -> new IronChestBlock(properties.mapColor(MapColor.METAL).strength(2.0F, 6.0F)
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+    public static final DeferredBlock<LargeChestBlock> GOLDEN_CHEST = BLOCKS.registerBlock("golden_chest",
+            properties -> new LargeChestBlock(ChestTier.GOLDEN, properties.mapColor(MapColor.GOLD).strength(2.0F, 6.0F)
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+    public static final DeferredBlock<LargeChestBlock> DIAMOND_CHEST = BLOCKS.registerBlock("diamond_chest",
+            properties -> new LargeChestBlock(ChestTier.DIAMOND, properties.mapColor(MapColor.DIAMOND).strength(2.0F, 6.0F)
+                    .requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
     // Same strength (0.3F) and sound (GLASS) vanilla's own redstone_lamp uses, same unconditional
     // light level (15) vanilla's own glowstone uses.

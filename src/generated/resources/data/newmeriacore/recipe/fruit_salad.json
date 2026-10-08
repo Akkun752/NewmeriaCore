@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:apple",
+    "newmeriacore:peer",
+    "minecraft:melon_slice"
+  ],
+  "result": {
+    "id": "newmeriacore:fruit_salad"
+  }
+}

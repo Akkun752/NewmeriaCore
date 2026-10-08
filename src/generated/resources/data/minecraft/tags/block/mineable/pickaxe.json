@@ -1,5 +1,8 @@
 {
   "values": [
+    "newmeriacore:iron_chest",
+    "newmeriacore:golden_chest",
+    "newmeriacore:diamond_chest",
     "newmeriacore:sapphire_ore",
     "newmeriacore:deepslate_sapphire_ore",
     "newmeriacore:sapphire_block",

@@ -55,6 +55,9 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         addAll(BlockTags.TRIGGERS_AMBIENT_DESERT_SAND_BLOCK_SOUNDS, ModBlocks.BLACK_SAND.get());
         addAll(BlockTags.TRIGGERS_AMBIENT_DESERT_DRY_VEGETATION_BLOCK_SOUNDS, ModBlocks.BLACK_SAND.get());
 
+        addAll(BlockTags.MINEABLE_WITH_PICKAXE, ModBlocks.IRON_CHEST.get(), ModBlocks.GOLDEN_CHEST.get(), ModBlocks.DIAMOND_CHEST.get());
+        addAll(BlockTags.NEEDS_IRON_TOOL, ModBlocks.IRON_CHEST.get(), ModBlocks.GOLDEN_CHEST.get(), ModBlocks.DIAMOND_CHEST.get());
+
         addAll(BlockTags.MINEABLE_WITH_PICKAXE,
                 ModBlocks.SAPPHIRE_ORE.get(), ModBlocks.DEEPSLATE_SAPPHIRE_ORE.get(), ModBlocks.SAPPHIRE_BLOCK.get(),
 

@@ -17,6 +17,7 @@ import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.CropBlock;
 
@@ -49,6 +50,10 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.TOMATO_SEEDS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.NEWMERIA_MANUAL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PINE_CONE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.HAMBURGER.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SAUSAGE_ROUGAIL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.HOT_DOG.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.FRUIT_SALAD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAPPHIRE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.OBSIDIAN_STICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAPPHIRE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -136,6 +141,9 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createNonTemplateModelBlock(ModBlocks.SAPHIRA_EGG.get());
         blockModels.registerSimpleItemModel(ModBlocks.SAPHIRA_EGG.get(), ModelLocationUtils.getModelLocation(ModBlocks.SAPHIRA_EGG.get()));
         blockModels.createTrivialCube(ModBlocks.GREEN_SCREEN_BLOCK.get());
+        blockModels.createChest(ModBlocks.IRON_CHEST.get(), Blocks.IRON_BLOCK, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "iron"), false);
+        blockModels.createChest(ModBlocks.GOLDEN_CHEST.get(), Blocks.GOLD_BLOCK, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "gold"), false);
+        blockModels.createChest(ModBlocks.DIAMOND_CHEST.get(), Blocks.DIAMOND_BLOCK, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "diamond"), false);
 
         blockModels.createTrivialCube(ModBlocks.BLACK_SAND.get());
         blockModels.createCrossBlockWithDefaultItem(ModBlocks.SHORT_DRY_BLACK_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);

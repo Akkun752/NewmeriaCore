@@ -34,6 +34,9 @@
     "newmeriacore:mossy_marble_brick_stairs",
     "newmeriacore:mossy_marble_brick_wall",
     "newmeriacore:oil_cauldron",
+    "newmeriacore:iron_chest",
+    "newmeriacore:golden_chest",
+    "newmeriacore:diamond_chest",
     "newmeriacore:green_screen_block"
   ]
 }

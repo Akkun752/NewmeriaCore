@@ -57,5 +57,21 @@ public class ModFoods {
     public static final FoodProperties TOMATO = new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).build();
 
     // A small raw vegetable, between a Potato (1 / 0.3) and a Carrot (3 / 0.6).
+    // Bread (5 / 0.6) + Steak (8 / 0.8) + Tomato (3 / 0.3) add up to 16 food and 20.6 saturation;
+    // the assembled meal gives a little more: 18 food and 23.4 saturation.
+    public static final FoodProperties HAMBURGER = new FoodProperties.Builder().nutrition(18).saturationModifier(0.65f).build();
+
+    // Apple (4 / 0.3) + Pear (5 / 0.34) + Melon Slice (2 / 0.3) add up to 11 food and 7 saturation;
+    // the salad gives 12 food and 9.6 saturation.
+    public static final FoodProperties FRUIT_SALAD = new FoodProperties.Builder().nutrition(12).saturationModifier(0.4f).build();
+
+    // Sausage (2 / 0.96) + Rice (3 / 0.3) + Onion (2 / 0.4) + Tomato (3 / 0.3) add up to 10 food
+    // and 9 saturation; the cooked dish gives 11 food and 12.1 saturation.
+    public static final FoodProperties SAUSAGE_ROUGAIL = new FoodProperties.Builder().nutrition(11).saturationModifier(0.55f).build();
+
+    // Bread (5 / 0.6) + Sausage (2 / 0.96) add up to 7 food and 9.8 saturation;
+    // the hot dog gives 8 food and 11.2 saturation.
+    public static final FoodProperties HOT_DOG = new FoodProperties.Builder().nutrition(8).saturationModifier(0.7f).build();
+
     public static final FoodProperties ONION = new FoodProperties.Builder().nutrition(2).saturationModifier(0.4f).build();
 }

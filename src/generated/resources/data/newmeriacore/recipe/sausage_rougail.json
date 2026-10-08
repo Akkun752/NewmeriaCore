@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:bowl",
+    "newmeriacore:sausage",
+    "newmeriacore:rice",
+    "newmeriacore:onion",
+    "newmeriacore:tomato"
+  ],
+  "result": {
+    "id": "newmeriacore:sausage_rougail"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": "newmeriacore:golden_chest",
+    "D": "minecraft:diamond"
+  },
+  "pattern": [
+    "DDD",
+    "DCD",
+    "DDD"
+  ],
+  "result": {
+    "id": "newmeriacore:diamond_chest"
+  }
+}

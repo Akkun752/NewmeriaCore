@@ -94,6 +94,18 @@ public class ModItems {
     // Thrown exactly like a snowball (it is vanilla's snowball projectile carrying this item, so it
     // looks like a pine cone in flight), and burns half as long as a piece of coal: 800 ticks, the
     // vanilla burn-time preset that hanging signs happen to use.
+    public static final DeferredItem<Item> HAMBURGER = ITEMS.registerItem("hamburger",
+            properties -> new Item(properties.stacksTo(1).food(ModFoods.HAMBURGER)));
+
+    public static final DeferredItem<Item> FRUIT_SALAD = ITEMS.registerItem("fruit_salad",
+            properties -> new Item(properties.stacksTo(1).food(ModFoods.FRUIT_SALAD).usingConvertsTo(Items.BOWL)));
+
+    public static final DeferredItem<Item> SAUSAGE_ROUGAIL = ITEMS.registerItem("sausage_rougail",
+            properties -> new Item(properties.stacksTo(1).food(ModFoods.SAUSAGE_ROUGAIL).usingConvertsTo(Items.BOWL)));
+
+    public static final DeferredItem<Item> HOT_DOG = ITEMS.registerItem("hot_dog",
+            properties -> new Item(properties.food(ModFoods.HOT_DOG)));
+
     public static final DeferredItem<Item> PINE_CONE = ITEMS.registerItem("pine_cone",
             properties -> new SnowballItem(properties.stacksTo(16).cookingFuel(ContextIntProviders.COOKING_TIME_HANGING_SIGNS)));
 
@@ -222,6 +234,15 @@ public class ModItems {
             properties -> new BlockItem(ModBlocks.SAPPHIRE_BLOCK.get(), properties.useBlockDescriptionPrefix()));
     public static final DeferredItem<Item> SAPHIRA_EGG = ITEMS.registerItem("saphira_egg",
             properties -> new BlockItem(ModBlocks.SAPHIRA_EGG.get(), properties.useBlockDescriptionPrefix().rarity(Rarity.EPIC)));
+
+    public static final DeferredItem<Item> IRON_CHEST = ITEMS.registerItem("iron_chest",
+            properties -> new BlockItem(ModBlocks.IRON_CHEST.get(), properties.useBlockDescriptionPrefix()));
+
+    public static final DeferredItem<Item> GOLDEN_CHEST = ITEMS.registerItem("golden_chest",
+            properties -> new BlockItem(ModBlocks.GOLDEN_CHEST.get(), properties.useBlockDescriptionPrefix()));
+
+    public static final DeferredItem<Item> DIAMOND_CHEST = ITEMS.registerItem("diamond_chest",
+            properties -> new BlockItem(ModBlocks.DIAMOND_CHEST.get(), properties.useBlockDescriptionPrefix()));
 
     public static final DeferredItem<Item> GREEN_SCREEN_BLOCK = ITEMS.registerItem("green_screen_block",
             properties -> new BlockItem(ModBlocks.GREEN_SCREEN_BLOCK.get(), properties.useBlockDescriptionPrefix()));
