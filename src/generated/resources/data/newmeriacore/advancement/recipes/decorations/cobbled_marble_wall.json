@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:cobbled_marble_wall"
+        "recipes": "newmeriacore:cobbled_marble_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

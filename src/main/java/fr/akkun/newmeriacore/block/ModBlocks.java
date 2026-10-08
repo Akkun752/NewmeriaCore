@@ -84,19 +84,19 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> RICE_CROP = BLOCKS.registerBlock("rice_crop",
             properties -> new RiceCropBlock(properties.randomTicks().sound(SoundType.CROP)
-                    .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+                    .instabreak().noCollision().pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> CHILI_CROP = BLOCKS.registerBlock("chili_crop",
             properties -> new ChiliCropBlock(properties.randomTicks().sound(SoundType.CROP)
-                    .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+                    .instabreak().noCollision().pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> ONIONS = BLOCKS.registerBlock("onions",
             properties -> new OnionCropBlock(properties.randomTicks().sound(SoundType.CROP)
-                    .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+                    .instabreak().noCollision().pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> TOMATOES = BLOCKS.registerBlock("tomatoes",
             properties -> new TomatoCropBlock(properties.randomTicks().sound(SoundType.CROP)
-                    .instabreak().noCollision().pushReaction(PushReaction.DESTROY)));
+                    .instabreak().noCollision().pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> SAPPHIRE_ORE = BLOCKS.registerBlock("sapphire_ore",
             properties -> new DropExperienceBlock(UniformInt.of(3, 7), properties.mapColor(MapColor.STONE)
@@ -113,7 +113,7 @@ public class ModBlocks {
     // Same values as the vanilla Dragon Egg.
     public static final DeferredBlock<Block> SAPHIRA_EGG = BLOCKS.registerBlock("saphira_egg",
             properties -> new SaphiraEggBlock(properties.mapColor(MapColor.COLOR_BLUE).strength(3.0F, 9.0F)
-                    .lightLevel(state -> 1).noOcclusion().pushReaction(PushReaction.DESTROY)));
+                    .lightLevel(state -> 1).noOcclusion().pushReaction(PushReaction.POPPED)));
 
     // ---- Black sand family (same values as vanilla sand/sandstone family) ----
 
@@ -125,12 +125,12 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SHORT_DRY_BLACK_GRASS = BLOCKS.registerBlock("short_dry_black_grass",
             properties -> new ShortDryBlackGrassBlock(properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
                     .instabreak().sound(SoundType.GRASS).ignitedByLava().offsetType(BlockBehaviour.OffsetType.XYZ)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> TALL_DRY_BLACK_GRASS = BLOCKS.registerBlock("tall_dry_black_grass",
             properties -> new TallDryBlackGrassBlock(properties.mapColor(MapColor.COLOR_BLACK).replaceable().noCollision()
                     .instabreak().sound(SoundType.GRASS).ignitedByLava().offsetType(BlockBehaviour.OffsetType.XYZ)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> BLACK_SANDSTONE = BLOCKS.registerBlock("black_sandstone",
             properties -> new Block(properties.mapColor(MapColor.COLOR_BLACK)
@@ -196,10 +196,10 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> MARBLE_PRESSURE_PLATE = BLOCKS.registerBlock("marble_pressure_plate",
             properties -> new PressurePlateBlock(BlockSetType.STONE, properties.mapColor(MapColor.QUARTZ).forceSolidOn()
-                    .instrument(NoteBlockInstrument.BASEDRUM).noCollision().strength(0.75F).pushReaction(PushReaction.DESTROY)));
+                    .instrument(NoteBlockInstrument.BASEDRUM).noCollision().strength(0.75F).pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> MARBLE_BUTTON = BLOCKS.registerBlock("marble_button",
-            properties -> new ButtonBlock(BlockSetType.STONE, 20, properties.noCollision().strength(0.75F).pushReaction(PushReaction.DESTROY)));
+            properties -> new ButtonBlock(BlockSetType.STONE, 20, properties.noCollision().strength(0.75F).pushReaction(PushReaction.POPPED)));
 
     public static final DeferredBlock<Block> MARBLE_SLAB = BLOCKS.registerBlock("marble_slab",
             properties -> new SlabBlock(properties.mapColor(MapColor.QUARTZ)
@@ -256,7 +256,7 @@ public class ModBlocks {
     public static final DeferredBlock<OilFluidBlock> OIL = BLOCKS.registerBlock("oil",
             properties -> new OilFluidBlock(ModFluids.OIL_SOURCE.get(), properties
                     .mapColor(MapColor.COLOR_BLACK).replaceable().noCollision().strength(100.0F)
-                    .pushReaction(PushReaction.DESTROY).noLootTable().liquid().sound(SoundType.EMPTY)));
+                    .pushReaction(PushReaction.POPPED).noLootTable().liquid().sound(SoundType.EMPTY)));
 
     // Reached only by pouring an oil bucket into a plain vanilla cauldron - never placed directly, so
     // (like OIL above) no BlockItem of its own.

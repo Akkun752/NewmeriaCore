@@ -10,7 +10,6 @@
     "BiomeSourceAccessor",
     "MobMixin",
     "MultiNoiseBiomeSourceParameterListAccessor",
-    "NoiseGeneratorSettingsAccessor",
     "VillagerHostilesSensorMixin"
   ],
   "client": [

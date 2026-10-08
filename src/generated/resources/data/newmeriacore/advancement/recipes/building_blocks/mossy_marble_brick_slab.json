@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:mossy_marble_brick_slab"
+        "recipes": "newmeriacore:mossy_marble_brick_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:iron_spatula"
+        "recipes": "newmeriacore:iron_spatula"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

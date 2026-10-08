@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:potion",
+    "potion_contents": {
+      "potions": "minecraft:water"
+    }
+  },
+  "output": {
+    "components": {
+      "minecraft:potion_contents": {
+        "custom_color": 16777215,
+        "potion": "newmeriacore:limonade"
+      }
+    },
+    "id": "minecraft:potion"
+  },
+  "reagent": {
+    "item": "newmeriacore:rice"
+  }
+}

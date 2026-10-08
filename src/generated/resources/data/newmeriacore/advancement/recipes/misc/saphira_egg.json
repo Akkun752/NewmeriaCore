@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:saphira_egg"
+        "recipes": "newmeriacore:saphira_egg"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

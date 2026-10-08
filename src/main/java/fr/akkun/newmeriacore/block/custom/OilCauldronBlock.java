@@ -1,6 +1,5 @@
 package fr.akkun.newmeriacore.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import fr.akkun.newmeriacore.block.ModBlockEntities;
 import fr.akkun.newmeriacore.block.ModCauldronInteractions;
 import net.minecraft.core.BlockPos;
@@ -15,15 +14,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 /** Always-full cauldron (like lava/powder snow, not the leveled water cauldron), filled via {@code OIL_BUCKET}. */
 public class OilCauldronBlock extends AbstractCauldronBlock implements EntityBlock {
-    public static final MapCodec<OilCauldronBlock> CODEC = simpleCodec(OilCauldronBlock::new);
-
     public OilCauldronBlock(BlockBehaviour.Properties properties) {
         super(properties, ModCauldronInteractions.OIL);
-    }
-
-    @Override
-    protected MapCodec<? extends AbstractCauldronBlock> codec() {
-        return CODEC;
     }
 
     @Override

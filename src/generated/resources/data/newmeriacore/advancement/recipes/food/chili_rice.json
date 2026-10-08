@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:chili_rice"
+        "recipes": "newmeriacore:chili_rice"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

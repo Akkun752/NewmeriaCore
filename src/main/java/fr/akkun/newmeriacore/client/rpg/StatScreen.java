@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 
@@ -97,5 +98,14 @@ public class StatScreen extends Screen {
 
         Component pointsLeft = Component.translatable("gui.newmeriacore.stats.points", data.unspentStatPoints());
         graphics.centeredText(this.font, pointsLeft, centerX, top + STATS.length * ROW_HEIGHT + 10, -1);
+    }
+    /** The key that opens this menu (K by default) also closes it, on top of Escape. */
+    @Override
+    public boolean keyPressed(KeyEvent event) {
+        if (RpgKeybinds.OPEN_STATS.matches(event)) {
+            this.onClose();
+            return true;
+        }
+        return super.keyPressed(event);
     }
 }

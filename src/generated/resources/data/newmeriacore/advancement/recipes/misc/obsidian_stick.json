@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:obsidian_stick"
+        "recipes": "newmeriacore:obsidian_stick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

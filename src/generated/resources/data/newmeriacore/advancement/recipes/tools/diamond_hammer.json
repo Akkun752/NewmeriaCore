@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:diamond_hammer"
+        "recipes": "newmeriacore:diamond_hammer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:chainmail_boots"
+        "recipes": "newmeriacore:chainmail_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

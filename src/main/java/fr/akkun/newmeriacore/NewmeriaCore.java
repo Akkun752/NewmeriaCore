@@ -21,6 +21,7 @@ import fr.akkun.newmeriacore.rpg.companion.CompanionAttachments;
 import fr.akkun.newmeriacore.rpg.network.RpgNetworking;
 import fr.akkun.newmeriacore.sound.ModSounds;
 import fr.akkun.newmeriacore.stat.ModStats;
+import net.minecraft.world.level.block.DispenserBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -78,11 +79,13 @@ public class NewmeriaCore {
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        // The explicit file name keeps reading the config file older versions of the mod created.
+        modContainer.registerConfig(ModConfig.Type.LOCAL, Config.SPEC, NewmeriaCore.MOD_ID + "-common.toml");
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-
+        // Dispensers shoot pine cones, as they do snowballs.
+        event.enqueueWork(() -> DispenserBlock.registerProjectileBehavior(ModItems.PINE_CONE.get()));
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

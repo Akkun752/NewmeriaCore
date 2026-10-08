@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:oil_bucket"
+        "recipes": "newmeriacore:oil_bucket"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

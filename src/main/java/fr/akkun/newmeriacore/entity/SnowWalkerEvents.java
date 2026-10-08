@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.npc.villager.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -30,7 +31,7 @@ public class SnowWalkerEvents {
     public static void onPotentialSpawns(LevelEvent.PotentialSpawns event) {
         if (event.getMobCategory() == MobCategory.MONSTER && SnowWalker.isOnSnowOrIce(event.getLevel(), event.getPos())) {
             event.addSpawnerData(new Weighted<>(new MobSpawnSettings.SpawnerData(
-                    ModEntityTypes.SNOW_WALKER.get(), NATURAL_SPAWN_PACK_SIZE, NATURAL_SPAWN_PACK_SIZE), NATURAL_SPAWN_WEIGHT));
+                    ModEntityTypes.SNOW_WALKER.get(), new ConstantInt(NATURAL_SPAWN_PACK_SIZE)), NATURAL_SPAWN_WEIGHT));
         }
     }
 

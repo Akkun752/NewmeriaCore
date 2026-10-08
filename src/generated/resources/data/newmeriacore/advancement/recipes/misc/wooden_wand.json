@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:wooden_wand"
+        "recipes": "newmeriacore:wooden_wand"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:green_screen_block"
+        "recipes": "newmeriacore:green_screen_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

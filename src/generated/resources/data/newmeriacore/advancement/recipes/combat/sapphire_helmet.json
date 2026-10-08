@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:sapphire_helmet"
+        "recipes": "newmeriacore:sapphire_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

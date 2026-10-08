@@ -10,17 +10,16 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Unit;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SnowballItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.Consumables;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -29,8 +28,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(NewmeriaCore.MOD_ID);
 
+    // Composting chances and fuel values are the vanilla presets: "medium" is what an apple or a
+    // carrot has, "low" what seeds and dry grass have.
     public static final DeferredItem<Item> PEER = ITEMS.registerItem("peer",
-            properties -> new Item(properties.food(ModFoods.PEER)));
+            properties -> new Item(properties.food(ModFoods.PEER).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)));
 
     public static final DeferredItem<Item> RICE_SHOOT = ITEMS.registerItem("rice_shoot",
             properties -> new BlockItem(ModBlocks.RICE_CROP.get(), properties));
@@ -39,10 +40,10 @@ public class ModItems {
             properties -> new Item(properties.food(ModFoods.RICE)));
 
     public static final DeferredItem<Item> CHILI_PEPPER = ITEMS.registerItem("chili_pepper",
-            properties -> new Item(properties.food(ModFoods.CHILI_PEPPER)));
+            properties -> new Item(properties.food(ModFoods.CHILI_PEPPER).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)));
 
     public static final DeferredItem<Item> CHILI_SEEDS = ITEMS.registerItem("chili_seeds",
-            properties -> new BlockItem(ModBlocks.CHILI_CROP.get(), properties));
+            properties -> new BlockItem(ModBlocks.CHILI_CROP.get(), properties.compostable(ContextIntProviders.COMPOSTABLE_LOW)));
 
     public static final DeferredItem<Item> CHILI_RICE = ITEMS.registerItem("chili_rice",
             properties -> new Item(properties.stacksTo(1).food(ModFoods.CHILI_RICE, ModFoods.CHILI_RICE_CONSUMABLE).usingConvertsTo(Items.BOWL)));
@@ -81,14 +82,20 @@ public class ModItems {
             properties -> new Item(properties.food(ModFoods.FRIED_SAUSAGE)));
 
     public static final DeferredItem<Item> TOMATO = ITEMS.registerItem("tomato",
-            properties -> new Item(properties.food(ModFoods.TOMATO)));
+            properties -> new Item(properties.food(ModFoods.TOMATO).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)));
 
     public static final DeferredItem<Item> TOMATO_SEEDS = ITEMS.registerItem("tomato_seeds",
-            properties -> new BlockItem(ModBlocks.TOMATOES.get(), properties));
+            properties -> new BlockItem(ModBlocks.TOMATOES.get(), properties.compostable(ContextIntProviders.COMPOSTABLE_LOW)));
 
     // Planted directly, like a vanilla carrot or potato.
     public static final DeferredItem<Item> ONION = ITEMS.registerItem("onion",
-            properties -> new BlockItem(ModBlocks.ONIONS.get(), properties.food(ModFoods.ONION)));
+            properties -> new BlockItem(ModBlocks.ONIONS.get(), properties.food(ModFoods.ONION).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)));
+
+    // Thrown exactly like a snowball (it is vanilla's snowball projectile carrying this item, so it
+    // looks like a pine cone in flight), and burns half as long as a piece of coal: 800 ticks, the
+    // vanilla burn-time preset that hanging signs happen to use.
+    public static final DeferredItem<Item> PINE_CONE = ITEMS.registerItem("pine_cone",
+            properties -> new SnowballItem(properties.stacksTo(16).cookingFuel(ContextIntProviders.COOKING_TIME_HANGING_SIGNS)));
 
     // The book every player gets when the server opens. Opening it and its text: see ManualClientEvents.
     public static final DeferredItem<Item> NEWMERIA_MANUAL = ITEMS.registerItem("newmeria_manual",
@@ -138,11 +145,11 @@ public class ModItems {
     public static final DeferredItem<Item> SAPPHIRE_PICKAXE = ITEMS.registerItem("sapphire_pickaxe",
             properties -> new Item(properties.pickaxe(ModToolTiers.SAPPHIRE, 1.0F, -2.8F)));
     public static final DeferredItem<Item> SAPPHIRE_AXE = ITEMS.registerItem("sapphire_axe",
-            properties -> new AxeItem(ModToolTiers.SAPPHIRE, 5.0F, -3.0F, properties));
+            properties -> new Item(properties.axe(ModToolTiers.SAPPHIRE, 5.0F, -3.0F)));
     public static final DeferredItem<Item> SAPPHIRE_SHOVEL = ITEMS.registerItem("sapphire_shovel",
-            properties -> new ShovelItem(ModToolTiers.SAPPHIRE, 1.5F, -3.0F, properties));
+            properties -> new Item(properties.shovel(ModToolTiers.SAPPHIRE, 1.5F, -3.0F)));
     public static final DeferredItem<Item> SAPPHIRE_HOE = ITEMS.registerItem("sapphire_hoe",
-            properties -> new HoeItem(ModToolTiers.SAPPHIRE, -4.0F, 0.0F, properties));
+            properties -> new Item(properties.hoe(ModToolTiers.SAPPHIRE, -4.0F, 0.0F)));
 
     // 3x3 AoE mining (see HammerEvents) - pickaxe-tier combat/mining stats on every material.
     public static final DeferredItem<Item> WOODEN_HAMMER = ITEMS.registerItem("wooden_hammer",
@@ -225,9 +232,11 @@ public class ModItems {
     public static final DeferredItem<Item> BLACK_SAND = ITEMS.registerItem("black_sand",
             properties -> new BlockItem(ModBlocks.BLACK_SAND.get(), properties.useBlockDescriptionPrefix()));
     public static final DeferredItem<Item> SHORT_DRY_BLACK_GRASS = ITEMS.registerItem("short_dry_black_grass",
-            properties -> new BlockItem(ModBlocks.SHORT_DRY_BLACK_GRASS.get(), properties.useBlockDescriptionPrefix()));
+            properties -> new BlockItem(ModBlocks.SHORT_DRY_BLACK_GRASS.get(), properties.useBlockDescriptionPrefix()
+                    .compostable(ContextIntProviders.COMPOSTABLE_LOW).cookingFuel(ContextIntProviders.COOKING_TIME_DRY_PLANTS)));
     public static final DeferredItem<Item> TALL_DRY_BLACK_GRASS = ITEMS.registerItem("tall_dry_black_grass",
-            properties -> new BlockItem(ModBlocks.TALL_DRY_BLACK_GRASS.get(), properties.useBlockDescriptionPrefix()));
+            properties -> new BlockItem(ModBlocks.TALL_DRY_BLACK_GRASS.get(), properties.useBlockDescriptionPrefix()
+                    .compostable(ContextIntProviders.COMPOSTABLE_LOW).cookingFuel(ContextIntProviders.COOKING_TIME_DRY_PLANTS)));
     public static final DeferredItem<Item> BLACK_SANDSTONE = ITEMS.registerItem("black_sandstone",
             properties -> new BlockItem(ModBlocks.BLACK_SANDSTONE.get(), properties.useBlockDescriptionPrefix()));
     public static final DeferredItem<Item> CHISELED_BLACK_SANDSTONE = ITEMS.registerItem("chiseled_black_sandstone",

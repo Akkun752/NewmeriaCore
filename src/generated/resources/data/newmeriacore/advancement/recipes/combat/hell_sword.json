@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:hell_sword"
+        "recipes": "newmeriacore:hell_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

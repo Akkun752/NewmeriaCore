@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:raw_sausage"
+        "recipes": "newmeriacore:raw_sausage"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

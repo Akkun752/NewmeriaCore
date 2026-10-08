@@ -8,6 +8,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.TallDryGrassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,12 +21,12 @@ public class TallDryBlackGrassBlock extends TallDryGrassBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, BonemealSource source) {
         return BonemealableBlock.hasSpreadableNeighbourPos(level, pos, ModBlocks.SHORT_DRY_BLACK_GRASS.get().defaultBlockState());
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state, BonemealSource source) {
         BlockState shortGrass = ModBlocks.SHORT_DRY_BLACK_GRASS.get().defaultBlockState();
         BonemealableBlock.findSpreadableNeighbourPos(level, pos, shortGrass)
                 .ifPresent(blockPos -> level.setBlockAndUpdate(blockPos, shortGrass));

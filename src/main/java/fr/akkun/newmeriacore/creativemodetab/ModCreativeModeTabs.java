@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.NEWMERIA_MANUAL);
                         output.accept(ModItems.PEER);
+                        output.accept(ModItems.PINE_CONE);
                         output.accept(ModItems.TOMATO);
                         output.accept(ModItems.TOMATO_SEEDS);
                         output.accept(ModItems.ONION);

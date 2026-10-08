@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:smooth_black_sandstone_stairs"
+        "recipes": "newmeriacore:smooth_black_sandstone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

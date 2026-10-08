@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:sapphire_sword"
+        "recipes": "newmeriacore:sapphire_sword"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

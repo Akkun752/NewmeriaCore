@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:golden_hammer"
+        "recipes": "newmeriacore:golden_hammer"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

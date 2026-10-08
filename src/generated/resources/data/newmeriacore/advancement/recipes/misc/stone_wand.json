@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:stone_wand"
+        "recipes": "newmeriacore:stone_wand"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

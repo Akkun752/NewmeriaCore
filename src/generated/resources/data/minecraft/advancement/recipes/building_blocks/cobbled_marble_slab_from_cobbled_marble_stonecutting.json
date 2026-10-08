@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobbled_marble_slab_from_cobbled_marble_stonecutting"
+        "recipes": "minecraft:cobbled_marble_slab_from_cobbled_marble_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

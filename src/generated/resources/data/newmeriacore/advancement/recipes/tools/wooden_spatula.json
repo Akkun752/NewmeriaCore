@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:wooden_spatula"
+        "recipes": "newmeriacore:wooden_spatula"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

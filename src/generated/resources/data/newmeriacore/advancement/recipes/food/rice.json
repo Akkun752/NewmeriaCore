@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:rice"
+        "recipes": "newmeriacore:rice"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

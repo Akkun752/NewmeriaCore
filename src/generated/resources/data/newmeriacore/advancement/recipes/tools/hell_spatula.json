@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:hell_spatula"
+        "recipes": "newmeriacore:hell_spatula"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

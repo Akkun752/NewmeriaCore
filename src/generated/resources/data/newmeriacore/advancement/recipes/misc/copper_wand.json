@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:copper_wand"
+        "recipes": "newmeriacore:copper_wand"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -24,7 +24,7 @@ public abstract class EnchantmentScreenMixin {
             Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "textures/gui/container/enchanting_table_no_lapis.png");
 
     @ModifyArg(method = "extractBackground", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blit(Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIFFIIII)V"))
+            target = "Lnet/minecraft/client/gui/GuiGraphicsExtractor;blit(Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIFFIIII)V"))
     private Identifier newmeriacore$conditionalBackground(Identifier original) {
         LocalPlayer player = Minecraft.getInstance().player;
         if (player != null && player.getData(RpgAttachments.RPG_DATA).magicLevel() >= 2) {

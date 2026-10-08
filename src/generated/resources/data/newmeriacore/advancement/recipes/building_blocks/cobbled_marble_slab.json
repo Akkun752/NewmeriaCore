@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:cobbled_marble_slab"
+        "recipes": "newmeriacore:cobbled_marble_slab"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

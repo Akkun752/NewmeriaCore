@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.feature.EndPodiumFeature;
+import net.minecraft.world.level.dimension.end.EnderDragonFight;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -40,7 +40,7 @@ public class SaphiraSummoning {
 
     /** The block on top of the exit portal's pillar - where vanilla puts the Dragon Egg. */
     private static BlockPos topOfPillar(ServerLevel level, BlockPos fightOrigin) {
-        return level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, EndPodiumFeature.getLocation(fightOrigin)).below();
+        return level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, EnderDragonFight.getPodiumLocation(fightOrigin)).below();
     }
 
     /** The four crystals are in place and the vanilla respawn ritual is about to start. */

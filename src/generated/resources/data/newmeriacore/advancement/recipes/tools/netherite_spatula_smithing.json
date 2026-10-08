@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:netherite_spatula_smithing"
+        "recipes": "newmeriacore:netherite_spatula_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

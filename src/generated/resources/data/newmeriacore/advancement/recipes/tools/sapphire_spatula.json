@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:sapphire_spatula"
+        "recipes": "newmeriacore:sapphire_spatula"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:cooked_duck"
+        "recipes": "newmeriacore:cooked_duck"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

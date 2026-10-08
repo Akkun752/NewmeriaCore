@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:brewing",
+  "input": {
+    "item": "minecraft:potion",
+    "potion_contents": {
+      "potions": "newmeriacore:limonade"
+    }
+  },
+  "output": {
+    "components": {
+      "minecraft:potion_contents": {
+        "custom_color": 16753920,
+        "potion": "newmeriacore:diabolo_glow_berries"
+      }
+    },
+    "id": "minecraft:potion"
+  },
+  "reagent": {
+    "item": "minecraft:glow_berries"
+  }
+}

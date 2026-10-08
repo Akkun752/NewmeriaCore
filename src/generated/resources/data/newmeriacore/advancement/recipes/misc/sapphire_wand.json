@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:sapphire_wand"
+        "recipes": "newmeriacore:sapphire_wand"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

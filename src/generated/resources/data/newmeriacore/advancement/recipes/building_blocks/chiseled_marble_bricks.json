@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:chiseled_marble_bricks"
+        "recipes": "newmeriacore:chiseled_marble_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

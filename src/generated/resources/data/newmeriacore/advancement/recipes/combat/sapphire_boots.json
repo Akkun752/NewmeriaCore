@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:sapphire_boots"
+        "recipes": "newmeriacore:sapphire_boots"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

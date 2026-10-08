@@ -4,12 +4,10 @@ import fr.akkun.newmeriacore.block.ModBlocks;
 import fr.akkun.newmeriacore.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
+import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.BeetrootBlock;
 import net.minecraft.world.level.block.Block;
@@ -20,26 +18,25 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchBlock;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.List;
 import java.util.Set;
 
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
-    public ModBlockLootTableProvider(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+    public ModBlockLootTableProvider(LootTableSubProvider.Context output) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), output);
     }
 
     @Override
     protected void generate() {
         add(ModBlocks.RICE_CROP.get(), createCropDrops(ModBlocks.RICE_CROP.get(),
-                ModItems.RICE_SHOOT.get(), ModItems.RICE_SHOOT.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.RICE_CROP.get())
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CropBlock.AGE, 7))));
+                ModItems.RICE_SHOOT.get(), ModItems.RICE_SHOOT.get(), atAge(ModBlocks.RICE_CROP.get(), CropBlock.AGE, 7)));
 
         add(ModBlocks.CHILI_CROP.get(), createCropDrops(ModBlocks.CHILI_CROP.get(),
-                ModItems.CHILI_PEPPER.get(), ModItems.CHILI_SEEDS.get(), LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.CHILI_CROP.get())
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(BeetrootBlock.AGE, 3))));
+                ModItems.CHILI_PEPPER.get(), ModItems.CHILI_SEEDS.get(), atAge(ModBlocks.CHILI_CROP.get(), BeetrootBlock.AGE, 3)));
 
         // Fully grown: 2-4 onions, each count equally likely. Otherwise just the onion that was planted.
         add(ModBlocks.ONIONS.get(), ripeOrElse(ModBlocks.ONIONS.get(), BeetrootBlock.AGE, 3,
@@ -81,12 +78,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         add(ModBlocks.GREEN_SCREEN_BLOCK.get(), createSilkTouchOnlyTable(ModBlocks.GREEN_SCREEN_BLOCK.get()));
     }
 
-    protected LootTable.Builder createMultipleOreDrops(Block block, Item item, float minDrops, float maxDrops) {
-        HolderLookup.RegistryLookup<Enchantment> enchantments = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+    protected LootTable.Builder createMultipleOreDrops(Block block, Item item, int minDrops, int maxDrops) {
         return this.createSilkTouchDispatchTable(block, this.applyExplosionDecay(block,
                 LootItem.lootTableItem(item)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                        .apply(ApplyBonusCount.addOreBonusCount(enchantments.getOrThrow(Enchantments.FORTUNE)))));
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(minDrops, maxDrops)))
+                        .apply(ApplyBonusCount.addOreBonusCount(this.enchantments.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     /** A crop dropping {@code min}-{@code max} of {@code ripeDrop} (uniformly, no Fortune bonus) at
@@ -94,10 +90,13 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     private LootTable.Builder ripeOrElse(Block crop, IntegerProperty ageProperty, int maxAge, Item ripeDrop, int min, int max, Item unripeDrop) {
         return applyExplosionDecay(crop, LootTable.lootTable().withPool(LootPool.lootPool().add(
                 LootItem.lootTableItem(ripeDrop)
-                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop)
-                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, maxAge)))
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(min, max)))
+                        .when(atAge(crop, ageProperty, maxAge))
+                        .apply(SetItemCountFunction.setCount(ContextIntProviders.between(min, max)))
                         .otherwise(LootItem.lootTableItem(unripeDrop)))));
+    }
+
+    private LootItemCondition.Builder atAge(Block crop, IntegerProperty ageProperty, int age) {
+        return MatchBlock.blockMatches(this.blocks, crop, StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, age));
     }
 
     @Override

@@ -42,17 +42,17 @@ public class SaphiraRenderer extends EnderDragonRenderer {
         poseStack.pushPose();
         float yRot = state.getHistoricalPos(7).yRot();
         float pitch = (float) (state.getHistoricalPos(5).y() - state.getHistoricalPos(10).y());
-        poseStack.mulPose(Axis.YP.rotationDegrees(-yRot));
-        poseStack.mulPose(Axis.XP.rotationDegrees(pitch * 10.0F));
+        poseStack.rotateDegrees(Axis.YP, -yRot);
+        poseStack.rotateDegrees(Axis.XP, pitch * 10.0F);
         poseStack.translate(0.0F, 0.0F, 1.0F);
         poseStack.scale(-1.0F, -1.0F, 1.0F);
         poseStack.translate(0.0F, -1.501F, 0.0F);
         if (state.deathTime > 0.0F) {
             int color = ARGB.white(1.0F - state.deathTime / 200.0F);
-            submitNodeCollector.submitModel(this.model, state, poseStack, DYING_RENDER_TYPE, state.lightCoords, OverlayTexture.NO_OVERLAY, color, null, state.outlineColor, null);
+            submitNodeCollector.submitModel(this.model, state, poseStack, DYING_RENDER_TYPE, state.lightCoords, OverlayTexture.NO_OVERLAY, color, null, state.outlineColor);
         } else {
             int overlayCoords = OverlayTexture.pack(0.0F, state.hasRedOverlay);
-            submitNodeCollector.submitModel(this.model, state, poseStack, TEXTURE, state.lightCoords, overlayCoords, state.outlineColor, null);
+            submitNodeCollector.submitModel(this.model, state, poseStack, TEXTURE, state.lightCoords, overlayCoords, state.outlineColor);
         }
         poseStack.popPose();
 

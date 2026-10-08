@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "newmeriacore:sapphire_pickaxe"
+        "recipes": "newmeriacore:sapphire_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

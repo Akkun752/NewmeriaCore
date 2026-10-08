@@ -9,17 +9,16 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
-import org.lwjgl.glfw.GLFW;
 
 @EventBusSubscriber(modid = NewmeriaCore.MOD_ID, value = Dist.CLIENT)
 public class RpgKeybinds {
     public static final KeyMapping OPEN_STATS = new KeyMapping("key.newmeriacore.open_stats",
-            GLFW.GLFW_KEY_K, KeyMapping.Category.MISC);
+            InputConstants.KEY_K, KeyMapping.Category.MISC);
     // Spells are now cast by right-clicking a Wand; M only opens the spell selection menu.
-    // GLFW keys are physical (US/QWERTY) positions - on an AZERTY keyboard the letter "M" is
-    // physically where QWERTY has ";", so GLFW_KEY_SEMICOLON is the key that actually shows "M".
+    // Key codes are physical (US/QWERTY) positions - on an AZERTY keyboard the letter "M" is
+    // physically where QWERTY has ";", so KEY_SEMICOLON is the key that actually shows "M".
     public static final KeyMapping OPEN_MAGIC = new KeyMapping("key.newmeriacore.open_magic",
-            GLFW.GLFW_KEY_SEMICOLON, KeyMapping.Category.MISC);
+            InputConstants.KEY_SEMICOLON, KeyMapping.Category.MISC);
 
     @SubscribeEvent
     static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
@@ -60,9 +59,9 @@ public class RpgKeybinds {
      */
     private static boolean isMagicKeyDown() {
         InputConstants.Key key = OPEN_MAGIC.getKey();
-        if (key.getType() != InputConstants.Type.KEYSYM) {
+        if (key.getType() != InputConstants.Type.KEYBOARD) {
             return OPEN_MAGIC.isDown();
         }
-        return InputConstants.isKeyDown(Minecraft.getInstance().getWindow(), key.getValue());
+        return InputConstants.isKeyDown(key.getValue());
     }
 }
