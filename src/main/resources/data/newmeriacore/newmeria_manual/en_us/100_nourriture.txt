@@ -1,0 +1,11 @@
+§lNew meals§r
+
+The world of Newmeria now has new foods and new crops. Visit a farmer to buy §1rice§r, §1tomatoes§r, §1onions§r and §1chili peppers§r.
+
+Birch trees now give you §1pears§r, just as oak trees give apples.
+
+You can also cut your pork into §lsausages§r.
+
+Mixing these new foods with the old ones will let you create your own meals.
+
+There is also a new way of cooking: §1frying§r. Place a cauldron filled with §1oil§r above a heat source, then throw your raw food into the oil. That should fry it, for you to enjoy.

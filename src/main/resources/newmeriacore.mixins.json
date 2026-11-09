@@ -3,23 +3,14 @@
   "package": "fr.akkun.newmeriacore.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "EnchantmentMenuMixin",
     "EnderDragonAccessor",
     "EnderDragonFightMixin",
     "EnderDragonMixin",
     "BiomeSourceAccessor",
-    "MobMixin",
-    "MultiNoiseBiomeSourceParameterListAccessor",
-    "VillagerHostilesSensorMixin"
+    "MultiNoiseBiomeSourceParameterListAccessor"
   ],
   "client": [
-    "client.EnchantmentScreenMixin",
-    "client.PlayerTabOverlayMixin",
-    "client.WolfRendererMixin",
-    "client.AbstractZombieRendererMixin",
-    "client.HorseRendererMixin",
-    "client.IronGolemRendererMixin",
-    "client.NautilusRendererMixin"
+    "client.PlayerTabOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1

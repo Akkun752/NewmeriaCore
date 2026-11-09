@@ -2,6 +2,8 @@ package fr.akkun.newmeriacore.client;
 
 import fr.akkun.newmeriacore.NewmeriaCore;
 import fr.akkun.newmeriacore.item.ModItems;
+import fr.akkun.newmeriacore.manual.ManualChapters;
+import fr.akkun.newmeriacore.manual.ReceivedManual;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
@@ -9,34 +11,31 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.resources.Identifier;
-import net.minecraft.server.packs.resources.Resource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 /**
  * Right-clicking with the Newmeria Manual opens it in the vanilla book screen. Its text is not in
- * the code: it is read, each time the book is opened, from a plain text file in the mod's assets,
- * {@code assets/newmeriacore/texts/newmeria_manual/<language>.txt} (the game language, e.g.
- * {@code fr_fr}; {@value #FALLBACK_LANGUAGE} when there is no file for that language).
+ * the code: it is made of the chapters every mod of the server ships in its data (see {@link
+ * ManualChapters} for where they go), which the server sends to the player when they join. The
+ * chapters in the game language are shown, or those in {@value ManualChapters#FALLBACK_LANGUAGE} when
+ * there are none.
  *
- * <p>File format: sections separated by a line containing only {@value #PAGE_SEPARATOR}, each
- * starting on a new page. Line breaks are kept and the usual {@code §} formatting codes work. A
- * section too long for one page simply continues on the next ones: the text never has to be fitted
- * to the page by hand.
+ * <p>Text format: each chapter starts on a new page, and so does each section of a chapter - sections
+ * being separated by a line containing only {@value #PAGE_SEPARATOR}. Line breaks are kept and the
+ * usual {@code §} formatting codes work. A section too long for one page simply continues on the next
+ * ones: the text never has to be fitted to the page by hand.
  */
 @EventBusSubscriber(modid = NewmeriaCore.MOD_ID, value = Dist.CLIENT)
 public class ManualClientEvents {
     private static final String PAGE_SEPARATOR = "---";
-    private static final String FALLBACK_LANGUAGE = "fr_fr";
     // What the vanilla book screen can show on a page (BookViewScreen: TEXT_WIDTH, TEXT_HEIGHT / line height).
     private static final int PAGE_TEXT_WIDTH = 114;
     private static final int LINES_PER_PAGE = 14;
@@ -49,25 +48,17 @@ public class ManualClientEvents {
         Minecraft.getInstance().gui.setScreen(new BookViewScreen(new BookViewScreen.BookAccess(loadPages())));
     }
 
-    private static Identifier file(String language) {
-        return Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "texts/newmeria_manual/" + language + ".txt");
+    /** The manual of one server must not show up on the next one. */
+    @SubscribeEvent
+    static void onLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
+        ReceivedManual.clear();
     }
 
     private static List<Component> loadPages() {
-        Minecraft minecraft = Minecraft.getInstance();
-        Optional<Resource> resource = minecraft.getResourceManager().getResource(file(minecraft.getLanguageManager().getSelected()));
-        if (resource.isEmpty()) {
-            resource = minecraft.getResourceManager().getResource(file(FALLBACK_LANGUAGE));
-        }
-        if (resource.isEmpty()) {
-            return List.of();
-        }
-
         List<Component> pages = new ArrayList<>();
-        StringBuilder section = new StringBuilder();
-        try (BufferedReader reader = resource.get().openAsReader()) {
-            String line;
-            while ((line = reader.readLine()) != null) {
+        for (String chapter : ReceivedManual.chapters(Minecraft.getInstance().getLanguageManager().getSelected())) {
+            StringBuilder section = new StringBuilder();
+            for (String line : chapter.split("\n", -1)) {
                 if (line.strip().equals(PAGE_SEPARATOR)) {
                     pages.addAll(paginate(section.toString()));
                     section.setLength(0);
@@ -75,11 +66,8 @@ public class ManualClientEvents {
                     section.append(line).append('\n');
                 }
             }
-        } catch (IOException e) {
-            NewmeriaCore.LOGGER.error("Could not read the Newmeria Manual text", e);
-            return List.of();
+            pages.addAll(paginate(section.toString()));
         }
-        pages.addAll(paginate(section.toString()));
         return pages;
     }
 

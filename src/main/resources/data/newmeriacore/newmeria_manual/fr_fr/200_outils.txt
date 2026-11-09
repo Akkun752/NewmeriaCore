@@ -1,0 +1,11 @@
+§lDe nouveaux outils§r
+
+Newmeria vous permet désormais de créer trois nouveaux types d'outils : les §1spatules§r, les §1marteaux§r et les §1baguettes§r.
+
+Les §1spatules§r peuvent vous servir en combat, mais sont surtout utiles pour cuire de la nourriture plus rapidement avec un feu de camp.
+
+Les §1marteaux§r sont des pioches améliorées qui vous permettent de creuser trois blocs par trois.
+
+Les §1baguettes§r vous permettront de lancer différents sorts, en fonction de votre niveau en Magie.
+
+Vous pourrez obtenir un nouvel enchantement sur vos pioches et marteaux : §1cuisson§r, qui vous permettra de cuire instantanément les blocs que vous casserez.

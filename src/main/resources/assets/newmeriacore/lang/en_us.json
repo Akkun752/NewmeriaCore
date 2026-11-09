@@ -180,47 +180,6 @@
   "item.newmeriacore.vassily_brush": "Vassily's Brush",
   "item.newmeriacore.sky_spatula": "Sky's Spatula",
 
-  "rpg.newmeriacore.stat.force": "Force",
-  "rpg.newmeriacore.stat.resistance": "Resistance",
-  "rpg.newmeriacore.stat.speed": "Speed",
-  "rpg.newmeriacore.stat.magic": "Magic",
-  "rpg.newmeriacore.level_up": "RPG level %s! Stat points available: %s",
-
-  "gui.newmeriacore.stats.title": "RPG Stats",
-  "gui.newmeriacore.stats.level": "RPG Level: %s/%s",
-  "gui.newmeriacore.stats.next_level": "Points to next level: %s",
-  "gui.newmeriacore.stats.row": "%s: level %s/%s",
-  "gui.newmeriacore.stats.points": "Available stat points: %s",
-  "gui.newmeriacore.rpg_level": "%s",
-
-  "key.newmeriacore.open_stats": "Open RPG Stats",
-  "key.newmeriacore.open_magic": "Show Spell Wheel",
-
-  "rpg.newmeriacore.spell.lightning": "Lightning",
-  "rpg.newmeriacore.spell.teleport": "Teleport",
-  "rpg.newmeriacore.spell.friendship": "Friendship",
-  "rpg.newmeriacore.spell.fireball": "Fireball",
-  "rpg.newmeriacore.spell.ink_friend": "Ink Friend",
-  "rpg.newmeriacore.spell.on_cooldown": "%s is on cooldown (%ss left)",
-  "rpg.newmeriacore.spell.teleport.failed": "No safe spot found, try again.",
-
-  "gui.newmeriacore.magic_wheel.title": "Magic Spells",
-
-  "gui.newmeriacore.companion.title": "Ink Friend",
-  "gui.newmeriacore.companion.summon": "Summon",
-  "rpg.newmeriacore.companion.wolf": "Wolf",
-  "rpg.newmeriacore.companion.zombie": "Zombie",
-  "rpg.newmeriacore.companion.horse": "Horse",
-  "rpg.newmeriacore.companion.iron_golem": "Iron Golem",
-  "rpg.newmeriacore.companion.nautilus": "Nautilus",
-  "rpg.newmeriacore.companion.died": "Your Ink Friend has died.",
-
-  "commands.newmeriacore.rpg.add_points": "Added %s RPG points to %s (now level %s, %s stat point(s) available)",
-  "commands.newmeriacore.rpg.add_level": "Added %s RPG level(s) to %s (now level %s, %s stat point(s) available)",
-  "commands.newmeriacore.rpg.remove_points": "Removed %s RPG points from %s (now level %s, %s stat point(s) available)",
-  "commands.newmeriacore.rpg.remove_level": "Removed %s RPG level(s) from %s (now level %s, %s stat point(s) available)",
-  "commands.newmeriacore.rpg.reset": "Reset all RPG progress for %s",
-
   "commands.newmeriacore.colorname.success": "%s's name color set to %s",
   "commands.newmeriacore.colorname.invalid_color": "Unknown color: %s",
 

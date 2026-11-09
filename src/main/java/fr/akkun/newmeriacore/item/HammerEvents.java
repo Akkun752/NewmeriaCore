@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 
 /**
@@ -64,6 +65,7 @@ public class HammerEvents {
         if (state.canHarvestBlock(level, pos, player)) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             Block.dropResources(state, level, pos, blockEntity, player, tool);
+            NeoForge.EVENT_BUS.post(new HammerExtraBlockMinedEvent(level, player, pos, state));
         }
         level.removeBlock(pos, false);
         tool.hurtAndBreak(1, player, InteractionHand.MAIN_HAND);

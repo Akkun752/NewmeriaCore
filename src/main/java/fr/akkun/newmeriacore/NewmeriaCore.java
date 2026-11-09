@@ -11,15 +11,12 @@ import fr.akkun.newmeriacore.entity.ModEntityTypes;
 import fr.akkun.newmeriacore.entity.SaphiraSummoning;
 import fr.akkun.newmeriacore.worldgen.ModFeatures;
 import fr.akkun.newmeriacore.fluid.ModFluids;
-import fr.akkun.newmeriacore.home.HomeAttachments;
 import fr.akkun.newmeriacore.frying.FryingAttachments;
 import fr.akkun.newmeriacore.item.ModItems;
+import fr.akkun.newmeriacore.manual.ManualNetworking;
 import fr.akkun.newmeriacore.potion.ModPotions;
 import fr.akkun.newmeriacore.menu.ModMenuTypes;
 import fr.akkun.newmeriacore.recipe.ModRecipeSerializers;
-import fr.akkun.newmeriacore.rpg.RpgAttachments;
-import fr.akkun.newmeriacore.rpg.companion.CompanionAttachments;
-import fr.akkun.newmeriacore.rpg.network.RpgNetworking;
 import fr.akkun.newmeriacore.sound.ModSounds;
 import fr.akkun.newmeriacore.stat.ModStats;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -72,10 +69,7 @@ public class NewmeriaCore {
         ModRecipeSerializers.register(modEventBus);
         ModMenuTypes.register(modEventBus);
 
-        HomeAttachments.register(modEventBus);
-        RpgAttachments.register(modEventBus);
-        CompanionAttachments.register(modEventBus);
-        RpgNetworking.register(modEventBus);
+        ManualNetworking.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         // Register the item to a creative tab

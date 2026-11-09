@@ -1,0 +1,11 @@
+§lNew tools§r
+
+Newmeria now lets you craft three new kinds of tools: §1spatulas§r, §1hammers§r and §1wands§r.
+
+§1Spatulas§r can be used in combat, but they are mostly useful for cooking food faster on a campfire.
+
+§1Hammers§r are improved pickaxes that let you dig three blocks by three.
+
+§1Wands§r will let you cast different spells, depending on your Magic level.
+
+You can get a new enchantment on your pickaxes and hammers: §1Smelt§r, which instantly smelts the blocks you break.

@@ -180,47 +180,6 @@
   "item.newmeriacore.vassily_brush": "Pinceau de Vassily",
   "item.newmeriacore.sky_spatula": "Spatule de Sky",
 
-  "rpg.newmeriacore.stat.force": "Force",
-  "rpg.newmeriacore.stat.resistance": "Résistance",
-  "rpg.newmeriacore.stat.speed": "Vitesse",
-  "rpg.newmeriacore.stat.magic": "Magie",
-  "rpg.newmeriacore.level_up": "Niveau RPG %s ! Points de statistique disponibles : %s",
-
-  "gui.newmeriacore.stats.title": "Statistiques RPG",
-  "gui.newmeriacore.stats.level": "Niveau RPG : %s/%s",
-  "gui.newmeriacore.stats.next_level": "Points manquants pour le niveau suivant : %s",
-  "gui.newmeriacore.stats.row": "%s : niveau %s/%s",
-  "gui.newmeriacore.stats.points": "Points de statistique disponibles : %s",
-  "gui.newmeriacore.rpg_level": "%s",
-
-  "key.newmeriacore.open_stats": "Ouvrir les statistiques RPG",
-  "key.newmeriacore.open_magic": "Afficher la roue des sorts",
-
-  "rpg.newmeriacore.spell.lightning": "Foudre",
-  "rpg.newmeriacore.spell.teleport": "Téléportation",
-  "rpg.newmeriacore.spell.friendship": "Amitié",
-  "rpg.newmeriacore.spell.fireball": "Boule de feu",
-  "rpg.newmeriacore.spell.ink_friend": "Compagnon d'encre",
-  "rpg.newmeriacore.spell.on_cooldown": "%s est en recharge (%ss restantes)",
-  "rpg.newmeriacore.spell.teleport.failed": "Aucun endroit sûr trouvé, réessayez.",
-
-  "gui.newmeriacore.magic_wheel.title": "Sorts de magie",
-
-  "gui.newmeriacore.companion.title": "Compagnon d'encre",
-  "gui.newmeriacore.companion.summon": "Invoquer",
-  "rpg.newmeriacore.companion.wolf": "Chien",
-  "rpg.newmeriacore.companion.zombie": "Zombie",
-  "rpg.newmeriacore.companion.horse": "Cheval",
-  "rpg.newmeriacore.companion.iron_golem": "Golem de fer",
-  "rpg.newmeriacore.companion.nautilus": "Nautile",
-  "rpg.newmeriacore.companion.died": "Votre compagnon d'encre est mort.",
-
-  "commands.newmeriacore.rpg.add_points": "%s points RPG ajoutés à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
-  "commands.newmeriacore.rpg.add_level": "%s niveau(x) RPG ajouté(s) à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
-  "commands.newmeriacore.rpg.remove_points": "%s points RPG retirés à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
-  "commands.newmeriacore.rpg.remove_level": "%s niveau(x) RPG retiré(s) à %s (niveau %s désormais, %s point(s) de statistique disponible(s))",
-  "commands.newmeriacore.rpg.reset": "Progression RPG totalement réinitialisée pour %s",
-
   "commands.newmeriacore.colorname.success": "Couleur de %s définie sur %s",
   "commands.newmeriacore.colorname.invalid_color": "Couleur inconnue : %s",
 

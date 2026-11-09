@@ -1,7 +1,6 @@
 package fr.akkun.newmeriacore.entity;
 
 import fr.akkun.newmeriacore.mixin.EnderDragonAccessor;
-import fr.akkun.newmeriacore.rpg.SpellCasting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -203,7 +202,7 @@ public class Saphira extends EnderDragon {
         return level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, BlockPos.containing(x, 0.0, z)).getY();
     }
 
-    /** The Lightning spell's bolt: on one random player of those within range if there is any,
+    /** A powered lightning bolt (see {@link PoweredAttacks}): on one random player of those within range if there is any,
      *  otherwise on the ground somewhere within range. */
     private void strikeLightning(ServerLevel level) {
         List<ServerPlayer> inRange = level.getPlayers(player -> player.isAlive() && !player.isSpectator()
@@ -215,14 +214,14 @@ public class Saphira extends EnderDragon {
         } else {
             target = inRange.get(this.random.nextInt(inRange.size())).position();
         }
-        SpellCasting.strikeLightning(level, target, null);
+        PoweredAttacks.strikeLightning(level, target, null);
     }
 
-    /** One Fireball-spell fireball falling straight down from high above a random spot within range. */
+    /** One powered fireball (see {@link PoweredAttacks}) falling straight down from high above a random spot within range. */
     private void dropFireball(ServerLevel level) {
         Vec3 point = this.randomPointAround(FIREBALL_RADIUS);
         Vec3 from = new Vec3(point.x, this.groundY(level, point.x, point.z) + FIREBALL_SPAWN_HEIGHT, point.z);
-        SpellCasting.launchFireball(level, this, from, new Vec3(0.0, -1.0, 0.0));
+        PoweredAttacks.launchFireball(level, this, from, new Vec3(0.0, -1.0, 0.0));
     }
 
     /** Her own attacks never hurt her - the fireballs' explosions would otherwise, like any explosion

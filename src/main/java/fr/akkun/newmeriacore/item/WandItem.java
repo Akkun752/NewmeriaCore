@@ -1,6 +1,5 @@
 package fr.akkun.newmeriacore.item;
 
-import fr.akkun.newmeriacore.rpg.SpellCasting;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -8,11 +7,13 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.NeoForge;
 
 /**
- * Casts the player's currently selected spell (see {@code MagicWheelScreen}) on right click.
- * Durability is only consumed when a spell is actually cast - not when none is selected and not
- * while the spell is still on cooldown.
+ * Casts the player's currently selected spell on right click - through {@link WandCastEvent}: the
+ * spells themselves are in NewmeriaRPG, without which a wand does nothing. Durability is only
+ * consumed when a spell is actually cast - not when none is selected and not while the spell is
+ * still on cooldown.
  */
 public class WandItem extends Item {
     public WandItem(Properties properties) {
@@ -30,7 +31,7 @@ public class WandItem extends Item {
         if (!(level instanceof ServerLevel) || !(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResult.PASS;
         }
-        if (SpellCasting.cast(serverPlayer)) {
+        if (NeoForge.EVENT_BUS.post(new WandCastEvent(serverPlayer, hand)).wasCast()) {
             player.getItemInHand(hand).hurtAndBreak(1, player, hand);
             return InteractionResult.SUCCESS_SERVER;
         }
