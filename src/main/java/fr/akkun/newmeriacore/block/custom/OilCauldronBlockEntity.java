@@ -41,7 +41,7 @@ public class OilCauldronBlockEntity extends BlockEntity {
 
     private static void tickItem(Level level, ItemEntity itemEntity) {
         ItemStack stack = itemEntity.getItem();
-        Item friedResult = FryingRecipes.getFriedResult(stack.getItem());
+        FryingRecipes.FriedResult friedResult = FryingRecipes.getFriedResult(stack.getItem());
         if (friedResult == null) {
             return;
         }
@@ -52,8 +52,20 @@ public class OilCauldronBlockEntity extends BlockEntity {
         }
         int newProgress = progress.progressTicks() + 1;
         if (newProgress >= target) {
-            itemEntity.setItem(new ItemStack(friedResult, stack.getCount()));
+            // A recipe can give several items per raw one (an onion gives 4 rings): whatever does not fit in
+            // one stack comes out as more stacks, at the same place.
+            ItemStack fried = new ItemStack(friedResult.item());
+            int remaining = stack.getCount() * friedResult.count();
+            int firstStack = Math.min(remaining, fried.getMaxStackSize());
+            itemEntity.setItem(fried.copyWithCount(firstStack));
             itemEntity.setData(FryingAttachments.OIL_FRY_PROGRESS, OilFryProgress.NONE);
+            remaining -= firstStack;
+            while (remaining > 0) {
+                int count = Math.min(remaining, fried.getMaxStackSize());
+                level.addFreshEntity(new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(),
+                        fried.copyWithCount(count), 0.0, 0.0, 0.0));
+                remaining -= count;
+            }
         } else {
             itemEntity.setData(FryingAttachments.OIL_FRY_PROGRESS, new OilFryProgress(newProgress, target));
         }

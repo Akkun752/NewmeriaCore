@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.newmeriacore.newmeria"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.NEWMERIA_MANUAL);
+                        output.accept(ModItems.SPELLBOOK);
                         output.accept(ModItems.PEER);
                         output.accept(ModItems.PINE_CONE);
                         output.accept(ModItems.TOMATO);
@@ -50,6 +51,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAW_SAUSAGE);
                         output.accept(ModItems.SAUSAGE);
                         output.accept(ModItems.FRIED_SAUSAGE);
+                        output.accept(ModItems.ONION_RING);
 
                         output.accept(ModPotions.createStack(Items.POTION, ModPotions.LIMONADE, ModPotions.LIMONADE_COLOR));
                         output.accept(ModPotions.createStack(Items.POTION, ModPotions.DIABOLO_SWEET_BERRIES, ModPotions.DIABOLO_SWEET_BERRIES_COLOR));

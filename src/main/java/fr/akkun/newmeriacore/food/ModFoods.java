@@ -74,4 +74,10 @@ public class ModFoods {
     public static final FoodProperties HOT_DOG = new FoodProperties.Builder().nutrition(8).saturationModifier(0.7f).build();
 
     public static final FoodProperties ONION = new FoodProperties.Builder().nutrition(2).saturationModifier(0.4f).build();
+
+    // A crispy little snack, like Dried Kelp (1 / 0.6, eaten in 0.8 s instead of 1.6 s). Frying one onion gives
+    // 4 of them: 4 food and 4.8 saturation in all, against 2 and 1.6 for the raw onion - frying is worth it,
+    // as it is for meats.
+    public static final FoodProperties ONION_RING = new FoodProperties.Builder().nutrition(1).saturationModifier(0.6f).build();
+    public static final Consumable ONION_RING_CONSUMABLE = Consumables.defaultFood().consumeSeconds(0.8F).build();
 }

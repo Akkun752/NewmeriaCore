@@ -7,22 +7,28 @@ import net.minecraft.world.item.Items;
 import java.util.Map;
 
 public class FryingRecipes {
+    /** What frying one raw item gives: {@code count} of {@code item}. */
+    public record FriedResult(Item item, int count) {
+    }
+
     // Class is only ever loaded (and this map only ever built) well after mod registration finishes,
     // so eagerly calling .get() here on our own DeferredItems is safe.
-    private static final Map<Item, Item> RAW_TO_FRIED = Map.of(
-            Items.BEEF, ModItems.FRIED_BEEF.get(),
-            Items.CHICKEN, ModItems.FRIED_CHICKEN.get(),
-            Items.COD, ModItems.FRIED_COD.get(),
-            Items.MUTTON, ModItems.FRIED_MUTTON.get(),
-            Items.PORKCHOP, ModItems.FRIED_PORKCHOP.get(),
-            Items.RABBIT, ModItems.FRIED_RABBIT.get(),
-            Items.SALMON, ModItems.FRIED_SALMON.get(),
-            ModItems.RAW_DUCK.get(), ModItems.FRIED_DUCK.get(),
-            ModItems.RAW_SAUSAGE.get(), ModItems.FRIED_SAUSAGE.get()
+    private static final Map<Item, FriedResult> RAW_TO_FRIED = Map.of(
+            Items.BEEF, new FriedResult(ModItems.FRIED_BEEF.get(), 1),
+            Items.CHICKEN, new FriedResult(ModItems.FRIED_CHICKEN.get(), 1),
+            Items.COD, new FriedResult(ModItems.FRIED_COD.get(), 1),
+            Items.MUTTON, new FriedResult(ModItems.FRIED_MUTTON.get(), 1),
+            Items.PORKCHOP, new FriedResult(ModItems.FRIED_PORKCHOP.get(), 1),
+            Items.RABBIT, new FriedResult(ModItems.FRIED_RABBIT.get(), 1),
+            Items.SALMON, new FriedResult(ModItems.FRIED_SALMON.get(), 1),
+            ModItems.RAW_DUCK.get(), new FriedResult(ModItems.FRIED_DUCK.get(), 1),
+            ModItems.RAW_SAUSAGE.get(), new FriedResult(ModItems.FRIED_SAUSAGE.get(), 1),
+            // One onion is cut into 4 rings.
+            ModItems.ONION.get(), new FriedResult(ModItems.ONION_RING.get(), 4)
     );
 
-    /** @return the fried result for a raw food item, or null if it isn't fryable. */
-    public static Item getFriedResult(Item raw) {
+    /** @return what frying one of that raw item gives, or null if it isn't fryable. */
+    public static FriedResult getFriedResult(Item raw) {
         return RAW_TO_FRIED.get(raw);
     }
 }

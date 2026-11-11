@@ -139,6 +139,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Blocks.DRAGON_EGG), has(Blocks.DRAGON_EGG))
                 .save(output);
 
+        shapeless(RecipeCategory.MISC, ModItems.SPELLBOOK.get())
+                .requires(Items.BOOK)
+                .requires(Items.LAPIS_LAZULI)
+                .unlockedBy(getHasName(Items.LAPIS_LAZULI), has(Items.LAPIS_LAZULI))
+                .save(output);
+
         shaped(RecipeCategory.MISC, ModItems.OBSIDIAN_STICK.get(), 4)
                 .pattern("#")
                 .pattern("#")

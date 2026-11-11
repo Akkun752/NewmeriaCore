@@ -1,0 +1,9 @@
+{
+  "asset_id": "newmeriacore:memory",
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.newmeriacore.memory.title"
+  },
+  "width": 4
+}

@@ -80,6 +80,9 @@ public class ModItems {
             properties -> new Item(properties.food(ModFoods.SAUSAGE)));
     public static final DeferredItem<Item> FRIED_SAUSAGE = ITEMS.registerItem("fried_sausage",
             properties -> new Item(properties.food(ModFoods.FRIED_SAUSAGE)));
+    // Made by frying an onion (see FryingRecipes).
+    public static final DeferredItem<Item> ONION_RING = ITEMS.registerItem("onion_ring",
+            properties -> new Item(properties.food(ModFoods.ONION_RING, ModFoods.ONION_RING_CONSUMABLE)));
 
     public static final DeferredItem<Item> TOMATO = ITEMS.registerItem("tomato",
             properties -> new Item(properties.food(ModFoods.TOMATO).compostable(ContextIntProviders.COMPOSTABLE_MEDIUM)));
@@ -113,7 +116,12 @@ public class ModItems {
     public static final DeferredItem<Item> NEWMERIA_MANUAL = ITEMS.registerItem("newmeria_manual",
             properties -> new Item(properties.stacksTo(1)));
 
-    public static final DeferredItem<Item> SAPPHIRE = ITEMS.registerItem("sapphire",
+    // Where players learn and forget their spells. It does nothing on its own: opening it is NewmeriaRPG's
+    // (see its SpellbookScreen), like the effect of the wands.
+    public static final DeferredItem<Item> SPELLBOOK = ITEMS.registerItem("spellbook",
+            properties -> new Item(properties.stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final DeferredItem<Item> SAPPHIRE =ITEMS.registerItem("sapphire",
             properties -> new Item(properties));
 
     public static final DeferredItem<Item> SAPPHIRE_SWORD = ITEMS.registerItem("sapphire_sword",

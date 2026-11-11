@@ -1,5 +1,7 @@
 {
   "item.newmeriacore.newmeria_manual": "Newmeria Manual",
+  "item.newmeriacore.spellbook": "Spellbook",
+  "painting.newmeriacore.memory.title": "Memory",
   "enchantment.newmeriacore.smelt": "Smelt",
   "item.newmeriacore.peer": "Peer",
   "item.newmeriacore.pine_cone": "Pine Cone",
@@ -27,6 +29,7 @@
   "item.newmeriacore.raw_sausage": "Raw Sausage",
   "item.newmeriacore.sausage": "Sausage",
   "item.newmeriacore.fried_sausage": "Fried Sausage",
+  "item.newmeriacore.onion_ring": "Onion Ring",
   "item.newmeriacore.tomato": "Tomato",
   "item.newmeriacore.tomato_seeds": "Tomato Seeds",
   "item.newmeriacore.onion": "Onion",
@@ -182,6 +185,12 @@
 
   "commands.newmeriacore.colorname.success": "%s's name color set to %s",
   "commands.newmeriacore.colorname.invalid_color": "Unknown color: %s",
+  "commands.newmeriaservercore.vanish.on": "You are now invisible.",
+  "commands.newmeriaservercore.vanish.off": "You are visible again.",
+  "commands.newmeriaservercore.setsize.one": "Set the size of %s to %s",
+  "commands.newmeriaservercore.setsize.many": "Set the size of %s players to %s",
+  "container.newmeriaservercore.invsee": "%s's inventory",
+  "container.newmeriaservercore.invsee.unused": "Unused slot",
 
   "commands.newmeriacore.sethome.success": "Home set here.",
   "commands.newmeriacore.sethome.already_set": "You already have a home. Use /delhome to delete it before setting a new one.",

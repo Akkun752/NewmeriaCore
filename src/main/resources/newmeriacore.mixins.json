@@ -3,13 +3,11 @@
   "package": "fr.akkun.newmeriacore.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "EnderDragonAccessor",
-    "EnderDragonFightMixin",
-    "EnderDragonMixin",
     "BiomeSourceAccessor",
     "MultiNoiseBiomeSourceParameterListAccessor"
   ],
   "client": [
+    "client.LogoRendererMixin",
     "client.PlayerTabOverlayMixin"
   ],
   "injectors": {

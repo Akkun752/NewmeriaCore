@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.IEventBus;
@@ -45,9 +46,20 @@ public class ModEntityTypes {
                     .clientTrackingRange(10)
                     .build(ResourceKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath(NewmeriaCore.MOD_ID, "duck"))));
 
+    /**
+     * How a Saphira is created. NewmeriaCore only registers her (id, size, spawn egg, name): her code is in
+     * NewmeriaBosses, which sets this with {@link #setSaphiraFactory} when it loads. Without it, she is a
+     * plain Ender Dragon.
+     */
+    private static EntityType.EntityFactory<EnderDragon> saphiraFactory = EnderDragon::new;
+
+    public static void setSaphiraFactory(EntityType.EntityFactory<EnderDragon> factory) {
+        saphiraFactory = factory;
+    }
+
     // Same dimensions as the vanilla Ender Dragon.
-    public static final DeferredHolder<EntityType<?>, EntityType<Saphira>> SAPHIRA = ENTITY_TYPES.register("saphira",
-            () -> EntityType.Builder.<Saphira>of(Saphira::new, MobCategory.MONSTER)
+    public static final DeferredHolder<EntityType<?>, EntityType<EnderDragon>> SAPHIRA = ENTITY_TYPES.register("saphira",
+            () -> EntityType.Builder.<EnderDragon>of((type, level) -> saphiraFactory.create(type, level), MobCategory.MONSTER)
                     .fireImmune()
                     .sized(16.0F, 8.0F)
                     .passengerAttachments(3.0F)
@@ -56,7 +68,8 @@ public class ModEntityTypes {
 
     private static void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
         event.put(DUCK.get(), Duck.createAttributes().build());
-        event.put(SAPHIRA.get(), Saphira.createAttributes().build());
+        // The Ender Dragon's: NewmeriaBosses raises her health on top of it.
+        event.put(SAPHIRA.get(), EnderDragon.createAttributes().build());
         event.put(SNOW_WALKER.get(), SnowWalker.createAttributes().build());
         event.put(HELL_ZOMBIE.get(), HellZombie.createAttributes().build());
     }

@@ -46,9 +46,11 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.RAW_SAUSAGE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAUSAGE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.FRIED_SAUSAGE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.ONION_RING.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.TOMATO.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.TOMATO_SEEDS.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.NEWMERIA_MANUAL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.SPELLBOOK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.PINE_CONE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.HAMBURGER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(ModItems.SAUSAGE_ROUGAIL.get(), ModelTemplates.FLAT_ITEM);

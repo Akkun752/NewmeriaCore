@@ -1,5 +1,7 @@
 {
   "item.newmeriacore.newmeria_manual": "Manuel de Newmeria",
+  "item.newmeriacore.spellbook": "Grimoire de sorts",
+  "painting.newmeriacore.memory.title": "Souvenir",
   "enchantment.newmeriacore.smelt": "Cuisson",
   "item.newmeriacore.peer": "Poire",
   "item.newmeriacore.pine_cone": "Pomme de pin",
@@ -27,6 +29,7 @@
   "item.newmeriacore.raw_sausage": "Saucisse crue",
   "item.newmeriacore.sausage": "Saucisse",
   "item.newmeriacore.fried_sausage": "Saucisse frite",
+  "item.newmeriacore.onion_ring": "Rondelle d'oignon",
   "item.newmeriacore.tomato": "Tomate",
   "item.newmeriacore.tomato_seeds": "Graines de tomate",
   "item.newmeriacore.onion": "Oignon",
@@ -182,6 +185,12 @@
 
   "commands.newmeriacore.colorname.success": "Couleur de %s définie sur %s",
   "commands.newmeriacore.colorname.invalid_color": "Couleur inconnue : %s",
+  "commands.newmeriaservercore.vanish.on": "Vous êtes maintenant invisible.",
+  "commands.newmeriaservercore.vanish.off": "Vous êtes de nouveau visible.",
+  "commands.newmeriaservercore.setsize.one": "Taille de %s définie sur %s",
+  "commands.newmeriaservercore.setsize.many": "Taille de %s joueurs définie sur %s",
+  "container.newmeriaservercore.invsee": "Inventaire de %s",
+  "container.newmeriaservercore.invsee.unused": "Emplacement inutilisé",
 
   "commands.newmeriacore.sethome.success": "Home défini ici.",
   "commands.newmeriacore.sethome.already_set": "Vous avez déjà un home. Utilisez /delhome pour le supprimer avant d'en définir un nouveau.",
